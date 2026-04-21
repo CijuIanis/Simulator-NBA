@@ -63,12 +63,15 @@ int main() {
     std::cout << "Durata: " << c1.getDurationYears() << " ani\n";
     std::cout << "Este MAX: " << c1.isMaxContract() << "\n";
     std::cout << "Valoare ramasa: " << c1.getRemainingValue(0) << "\n";
+    std::cout << "Salariu/an: " << c1.getSalaryPerYear() << "\n";
 
     std::cout << "\n--- Test Player ---\n";
     Player p("Test Player", 25, "PG", 20.0, 5.0, 5.0, c1);
     std::cout << "Pozitie: " << p.getPosition() << "\n";
     std::cout << "Puncte: " << p.getPointsPerGame() << "\n";
     std::cout << "Recuperari: " << p.getReboundsPerGame() << "\n";
+    std::cout << "Impact score: " << p.getImpactScore() << "\n";
+    std::cout << "Contract: " << p.getContract() << "\n";
 
     std::cout << "\n--- Test Echipa ---\n";
     if (!season.empty() && !season[0].getEchipe().empty()) {
