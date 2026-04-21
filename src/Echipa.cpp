@@ -1,5 +1,8 @@
 #include "Echipa.h"
 #include <stdexcept>
+#include <sstream>
+#include <iomanip>
+#include <tabulate/table.hpp>
 
 double Echipa::calculeazaSalariiTotale() const {
     double total = 0.0;
@@ -48,10 +51,48 @@ std::ostream& operator<<(std::ostream& os, const Echipa& echipa) {
     os << "=== " << echipa.oras << " " << echipa.nume
        << " [" << echipa.conferinta << "] ===\n"
        << "Salary Cap: $" << echipa.salaryCap << "M | "
-       << "Salarii totale: $" << echipa.calculeazaSalariiTotale() << "M | "
-       << (echipa.esteSubSalaryCap() ? "Sub cap" : "Peste cap") << "\n"
-       << "Roster (" << echipa.roster.size() << " jucatori):\n";
-    for (const auto& player : echipa.roster)
-        os << "  " << player << "\n";
+       << "Salarii totale: $" << std::fixed << std::setprecision(2)
+       << echipa.calculeazaSalariiTotale() << "M | "
+       << (echipa.esteSubSalaryCap() ? "Sub cap" : "Peste cap") << "\n";
+
+    tabulate::Table tabel;
+    tabel.add_row({"Pozitie", "Nume", "Varsta", "PPG", "APG", "RPG", "Tip", "Salariu", "Statut"});
+
+    for (const auto& player : echipa.roster) {
+        std::ostringstream ppg, apg, rpg, sal;
+        ppg << std::fixed << std::setprecision(1) << player.getPointsPerGame();
+        apg << std::fixed << std::setprecision(1) << player.getAssistsPerGame();
+        rpg << std::fixed << std::setprecision(1) << player.getReboundsPerGame();
+        sal << "$" << std::fixed << std::setprecision(2) << player.getContract().getSalaryPerYear() << "M";
+
+        tabel.add_row({
+            player.getPosition(),
+            player.getName(),
+            std::to_string(player.getAge()),
+            ppg.str(),
+            apg.str(),
+            rpg.str(),
+            player.getContract().getType(),
+            sal.str(),
+            player.isAllStar() ? "All-Star" : "Role Player"
+        });
+    }
+
+    // header galben si bold
+    tabel[0].format()
+        .font_style({tabulate::FontStyle::bold})
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::yellow);
+
+    // All-Star verde, Role Player albastru
+    for (auto i = 1u; i <= echipa.roster.size(); i++) {
+        if (echipa.roster[i - 1].isAllStar()) {
+            tabel[i].format().font_color(tabulate::Color::green);
+        } else {
+            tabel[i].format().font_color(tabulate::Color::blue);
+        }
+    }
+
+    os << tabel << "\n";
     return os;
 }

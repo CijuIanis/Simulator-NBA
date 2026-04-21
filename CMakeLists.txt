@@ -32,7 +32,15 @@ FetchContent_Declare(
         GIT_PROGRESS   ON
 )
 
-FetchContent_MakeAvailable(nlohmann_json)
+FetchContent_Declare(
+        tabulate
+        GIT_REPOSITORY https://github.com/p-ranav/tabulate.git
+        GIT_TAG        master
+        GIT_SHALLOW    1
+        GIT_PROGRESS   ON
+)
+
+FetchContent_MakeAvailable(nlohmann_json tabulate)
 
 ###############################################################################
 
@@ -45,7 +53,6 @@ FetchContent_MakeAvailable(nlohmann_json)
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${MAIN_EXECUTABLE_NAME}
         main.cpp
-        src/Utilitati.cpp
 )
 target_sources(${MAIN_EXECUTABLE_NAME}
         PRIVATE
@@ -71,7 +78,10 @@ target_include_directories(${MAIN_EXECUTABLE_NAME} PUBLIC
 target_include_directories(${MAIN_EXECUTABLE_NAME} SYSTEM PRIVATE
         ext
 )
-target_link_libraries(${MAIN_EXECUTABLE_NAME} nlohmann_json::nlohmann_json)
+target_link_libraries(${MAIN_EXECUTABLE_NAME}
+        nlohmann_json::nlohmann_json
+        tabulate::tabulate
+)
 
 ###############################################################################
 

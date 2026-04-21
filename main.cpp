@@ -27,7 +27,7 @@ int main() {
     while (true) {
         std::cout << "\n=== Simulator NBA ===\n";
         std::cout << "Sezoane disponibile:\n";
-        for (int i = 0; i < (int)season.size(); i++)
+        for(auto i = 0u; i < season.size(); i++)
             std::cout << "  " << season[i].getAn() << "\n";
         std::cout << "\nIntroduceti anul sezonului (ex: 1995-96) sau 'exit' pentru iesire: ";
 

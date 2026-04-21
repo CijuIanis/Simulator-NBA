@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
+#include <tabulate/table.hpp>
 
 Sezon::Sezon(const std::string& an, const std::string& campioana)
     : an(an), campioana(campioana), nrEchipe(0) {}
@@ -50,15 +52,37 @@ void Sezon::afiseazaClassament() const {
         return a->getScorImpact() > b->getScorImpact();
     });
 
-    std::cout << "\nClasament Sezon " << an << ":\n";
-    std::cout << std::string(50, '-') << "\n";
-    for (int i = 0; i < (int)sorted.size(); i++)
-    {
-        std::cout << (i + 1) << ". "
-        << std::setw(25) << std::left << sorted[i]->getNume()
-        << " | Impact: " << std::fixed << std::setprecision(1)
-        << sorted[i]->getScorImpact() << "\n";
+    tabulate::Table tabel;
+    tabel.add_row({"#", "Echipa", "Oras", "Conferinta", "Impact"});
+
+    for (auto i = 0u; i < sorted.size(); i++) {
+        std::ostringstream impact;
+        impact << std::fixed << std::setprecision(1) << sorted[i]->getScorImpact();
+        tabel.add_row({
+            std::to_string(i + 1),
+            sorted[i]->getNume(),
+            sorted[i]->getOras(),
+            sorted[i]->getConferinta(),
+            impact.str()
+        });
+
+        // colorare podium
+        if (i == 0)
+            tabel[i + 1].format().font_color(tabulate::Color::yellow);  // aur
+        else if (i == 1)
+            tabel[i + 1].format().font_color(tabulate::Color::cyan);   // "argint"
+        else if (i == 2)
+            tabel[i + 1].format().font_color(tabulate::Color::magenta); // "bronz"
     }
+
+    // header bold + centrat + albastru
+    tabel[0].format()
+        .font_style({tabulate::FontStyle::bold})
+        .font_align(tabulate::FontAlign::center)
+        .font_color(tabulate::Color::blue);
+
+    std::cout << "\nClasament Sezon " << an << ":\n";
+    std::cout << tabel << "\n";
     std::cout << "Campioana reala: " << campioana << "\n";
 }
 
