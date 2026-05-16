@@ -3,6 +3,9 @@
 #include <string>
 #include <filesystem>
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
+#include <tabulate/table.hpp>
 #include "Sezon.h"
 #include "SezonLoader.h"
 #include "Utilitati.h"
@@ -10,6 +13,17 @@
 #include "Guard.h"
 #include "Forward.h"
 #include "Center.h"
+
+// formeaza un numar: maxim o zecimala daca e diferita de 0, altfel fara zecimale
+std::string formatNum(double val) {
+    std::ostringstream oss;
+    double decimala = val - static_cast<int>(val);
+    if (decimala < 0.05 && decimala > -0.05)
+        oss << static_cast<int>(val);
+    else
+        oss << std::fixed << std::setprecision(1) << val;
+    return oss.str();
+}
 
 int main() {
     std::vector<std::string> fisiere;
@@ -36,12 +50,77 @@ int main() {
         std::cout << "Sezoane disponibile:\n";
         for (auto i = 0u; i < season.size(); i++)
             std::cout << "  " << season[i].getAn() << "\n";
-        std::cout << "\nIntroduceti anul sezonului (ex: 1995-96) sau 'exit' pentru iesire: ";
+        std::cout << "\nIntroduceti comanda [anul sezonului (ex:'2022-23') / 'compara' / 'exit']: ";
 
         std::string input;
         std::cin >> input;
 
         if (input == "exit") break;
+
+        if (input == "compara") {
+            std::cout << "Introduceti anul sezonului: ";
+            std::string an;
+            std::cin >> an;
+            std::cin.ignore();
+
+            const Sezon* sezonGasit = nullptr;
+            for (const auto& sezon : season) {
+                if (sezon.getAn() == an) {
+                    sezonGasit = &sezon;
+                    break;
+                }
+            }
+
+            if (!sezonGasit) {
+                std::cerr << "Sezonul '" << an << "' nu a fost gasit!\n";
+                continue;
+            }
+
+            std::cout << "Introduceti numele primului jucator: ";
+            std::string nume1;
+            std::getline(std::cin, nume1);
+
+            std::cout << "Introduceti numele celui de-al doilea jucator: ";
+            std::string nume2;
+            std::getline(std::cin, nume2);
+
+            const Player* j1 = sezonGasit->gasesteJucator(nume1);
+            const Player* j2 = sezonGasit->gasesteJucator(nume2);
+
+            if (!j1) {
+                std::cerr << "Jucatorul '" << nume1 << "' nu a fost gasit!\n";
+                continue;
+            }
+            if (!j2) {
+                std::cerr << "Jucatorul '" << nume2 << "' nu a fost gasit!\n";
+                continue;
+            }
+
+            tabulate::Table tabel;
+            tabel.add_row({"Statistica", j1->getName(), j2->getName()});
+            tabel.add_row({"Pozitie", j1->getPosition(), j2->getPosition()});
+            tabel.add_row({"PPG", formatNum(j1->getPointsPerGame()), formatNum(j2->getPointsPerGame())});
+            tabel.add_row({"APG", formatNum(j1->getAssistsPerGame()), formatNum(j2->getAssistsPerGame())});
+            tabel.add_row({"RPG", formatNum(j1->getReboundsPerGame()), formatNum(j2->getReboundsPerGame())});
+            tabel.add_row({"Impact Score", formatNum(j1->getImpactScore()), formatNum(j2->getImpactScore())});
+            tabel.add_row({"All-Star", j1->isAllStar() ? "DA" : "NU", j2->isAllStar() ? "DA" : "NU"});
+
+            tabel[0].format()
+                .font_style({tabulate::FontStyle::bold})
+                .font_align(tabulate::FontAlign::center)
+                .font_color(tabulate::Color::yellow);
+
+            std::cout << "\n" << tabel << "\n";
+
+            if (j1->isBetterThan(*j2))
+                std::cout << "Castigatorul: " << j1->getName() << "\n";
+            else if (j2->isBetterThan(*j1))
+                std::cout << "Castigatorul: " << j2->getName() << "\n";
+            else
+                std::cout << "Egalitate!\n";
+
+            continue;
+        }
 
         try {
             bool gasit = false;
@@ -54,22 +133,20 @@ int main() {
                     const Player& best = sezon.getCelMaiBunJucatorDinSezon();
                     std::cout << "\nCel mai bun jucator: " << best.getName() << "\n";
 
-                    // dynamic_cast pentru a afisa informatii specifice pozitiei
                     if (const Guard* g = dynamic_cast<const Guard*>(&best)) {
-                        std::cout << "  3PT%: " << g->getThreePointPercentage() * 100.0 << "%"
-                                  << " | Role Score: " << g->calculateRoleScore() << "\n";
+                        std::cout << "  3PT%: " << formatNum(g->getThreePointPercentage() * 100.0) << "%"
+                                  << " | Role Score: " << formatNum(g->calculateRoleScore()) << "\n";
                     } else if (const Forward* f = dynamic_cast<const Forward*>(&best)) {
-                        std::cout << "  FG%: " << f->getFieldGoalPercentage() * 100.0 << "%"
-                                  << " | Role Score: " << f->calculateRoleScore() << "\n";
+                        std::cout << "  FG%: " << formatNum(f->getFieldGoalPercentage() * 100.0) << "%"
+                                  << " | Role Score: " << formatNum(f->calculateRoleScore()) << "\n";
                     } else if (const Center* c = dynamic_cast<const Center*>(&best)) {
-                        std::cout << "  BLK: " << c->getBlocksPerGame()
-                                  << " | Role Score: " << c->calculateRoleScore() << "\n";
+                        std::cout << "  BLK: " << formatNum(c->getBlocksPerGame())
+                                  << " | Role Score: " << formatNum(c->calculateRoleScore()) << "\n";
                     }
 
                     std::cout << "Favorita la titlu: "
                               << sezon.getEchipaFavorita().getNume() << "\n";
 
-                    // STL: afisare echipe dupa conferinta cu std::map
                     auto conferinte = sezon.getEchipeDupaConferinta();
                     std::cout << "\nEchipe dupa conferinta:\n";
                     for (const auto& [conf, echipaList] : conferinte)
@@ -106,6 +183,13 @@ int main() {
     std::cout << "Role Score: " << p.calculateRoleScore() << "\n";
     std::cout << "Total jucatori creati: " << Player::getTotalJucatori() << "\n";
 
+    std::cout << "\n--- Test isBetterThan ---\n";
+    Guard p2("Test Player 2", 28, "SG", 25.0, 3.0, 4.0, c1, 0.42);
+    if (p2.isBetterThan(p))
+        std::cout << p2.getName() << " e mai bun decat " << p.getName() << "\n";
+    else
+        std::cout << p.getName() << " e mai bun decat " << p2.getName() << "\n";
+
     std::cout << "\n--- Test Echipa ---\n";
     if (!season.empty() && !season[0].getEchipe().empty()) {
         const Echipa& e = season[0].getEchipe()[0];
@@ -117,8 +201,6 @@ int main() {
     std::cout << "\n--- Test Sezon ---\n";
     if (!season.empty()) {
         std::cout << "Nr echipe: " << season[0].getNrEchipe() << "\n";
-
-        // STL: test getEchipeDupaConferinta
         auto conferinte = season[0].getEchipeDupaConferinta();
         for (const auto& [conf, echipaList] : conferinte)
             std::cout << conf << ": " << echipaList.size() << " echipe\n";
