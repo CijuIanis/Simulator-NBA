@@ -14,8 +14,6 @@ protected:
     Contract contract;
 
     double calculateEfficiencyRating() const;
-
-    // Afisare virtuala - implementata de fiecare clasa derivata
     virtual void print(std::ostream& os) const;
 
 private:
@@ -26,11 +24,7 @@ public:
            double ppg, double apg, double rpg, const Contract& contract);
 
     virtual ~Player() = default;
-
-    // Clone - constructor virtual
     virtual Player* clone() const = 0;
-
-    // Functie virtuala pura specifica temei
     virtual double calculateRoleScore() const = 0;
 
     const std::string& getName() const;
@@ -45,8 +39,10 @@ public:
     bool isAllStar() const;
     std::string getStatLine() const;
 
+    // Compara doi jucatori dupa impact score
+    bool isBetterThan(const Player& other) const;
+
     static int getTotalJucatori();
 
-    // Interfata non-virtuala pentru afisare
     friend std::ostream& operator<<(std::ostream& os, const Player& player);
 };

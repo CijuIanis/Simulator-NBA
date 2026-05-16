@@ -25,6 +25,9 @@ public:
     const Player& getCelMaiBunJucatorDinSezon() const;
     void afiseazaClassament() const;
 
+    // Cauta un jucator dupa nume in toate echipele
+    const Player* gasesteJucator(const std::string& nume) const;
+
     // STL: grupeaza echipele dupa conferinta (East/West)
     std::map<std::string, std::vector<const Echipa*>> getEchipeDupaConferinta() const;
 

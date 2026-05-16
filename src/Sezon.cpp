@@ -99,3 +99,11 @@ std::ostream& operator<<(std::ostream& os, const Sezon& sezon) {
         os << echipa << "\n";
     return os;
 }
+
+const Player* Sezon::gasesteJucator(const std::string& nume) const {
+    for (const auto& echipa : echipe)
+        for (const auto& player : echipa.getRoster())
+            if (player->getName() == nume)
+                return player.get();
+    return nullptr;
+}

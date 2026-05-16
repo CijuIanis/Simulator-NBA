@@ -34,6 +34,10 @@ bool Player::isAllStar() const {
            (pointsPerGame >= 14.0 && reboundsPerGame >= 8.0);
 }
 
+bool Player::isBetterThan(const Player& other) const {
+    return getImpactScore() > other.getImpactScore();
+}
+
 std::string Player::getStatLine() const {
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(1)
