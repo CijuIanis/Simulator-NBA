@@ -14,12 +14,11 @@ public:
     Contract& operator=(const Contract& other);
     ~Contract();
 
-    double getSalaryPerYear() const;
-    int getDurationYears() const;
-    const std::string& getType() const;
-    double getTotalValue() const;
-
-    bool isMaxContract() const;
+    double getSalaryPerYear() const { return salaryPerYear; }
+    int getDurationYears() const { return durationYears; }
+    const std::string& getType() const { return type; }
+    double getTotalValue() const { return salaryPerYear * durationYears; }
+    bool isMaxContract() const { return type == "MAX"; }
     double getRemainingValue(int yearsPlayed) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Contract& contract);

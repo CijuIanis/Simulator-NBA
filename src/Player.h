@@ -39,10 +39,11 @@ public:
     bool isAllStar() const;
     std::string getStatLine() const;
 
-    // Compara doi jucatori dupa impact score
-    bool isBetterThan(const Player& other) const;
+    bool isBetterThan(const Player& other) const {
+        return getImpactScore() > other.getImpactScore();
+    }
 
-    static int getTotalJucatori();
+    static int getTotalJucatori() { return totalJucatoriCreati; }
 
     friend std::ostream& operator<<(std::ostream& os, const Player& player);
 };

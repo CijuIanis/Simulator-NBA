@@ -13,12 +13,7 @@ Guard* Guard::clone() const {
 }
 
 double Guard::calculateRoleScore() const {
-    // Guard-ii sunt evaluati dupa pase si puncte de la distanta
     return assistsPerGame * 2.0 + pointsPerGame * 1.0 + threePointPercentage * 10.0;
-}
-
-double Guard::getThreePointPercentage() const {
-    return threePointPercentage;
 }
 
 void Guard::print(std::ostream& os) const {

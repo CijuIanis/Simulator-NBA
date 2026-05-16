@@ -14,9 +14,6 @@ public:
           double threePointPercentage);
 
     Guard* clone() const override;
-
-    // Scorul specific unui Guard: bazat pe pase si puncte
     double calculateRoleScore() const override;
-
-    double getThreePointPercentage() const;
+    double getThreePointPercentage() const { return threePointPercentage; }
 };

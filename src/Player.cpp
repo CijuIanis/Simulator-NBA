@@ -34,10 +34,6 @@ bool Player::isAllStar() const {
            (pointsPerGame >= 14.0 && reboundsPerGame >= 8.0);
 }
 
-bool Player::isBetterThan(const Player& other) const {
-    return getImpactScore() > other.getImpactScore();
-}
-
 std::string Player::getStatLine() const {
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(1)
@@ -45,10 +41,6 @@ std::string Player::getStatLine() const {
         << assistsPerGame << "ast | "
         << reboundsPerGame << "reb";
     return oss.str();
-}
-
-int Player::getTotalJucatori() {
-    return totalJucatoriCreati;
 }
 
 void Player::print(std::ostream& os) const {
