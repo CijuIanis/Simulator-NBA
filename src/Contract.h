@@ -16,6 +16,7 @@ public:
 
     // cppcheck-suppress unusedFunction
     double getSalaryPerYear() const { return salaryPerYear; }
+    // cppcheck-suppress unusedFunction
     int getDurationYears() const { return durationYears; }
     // cppcheck-suppress unusedFunction
     const std::string& getType() const { return type; }

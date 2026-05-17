@@ -13,10 +13,10 @@ Forward* Forward::clone() const {
 }
 
 double Forward::calculateRoleScore() const {
-    // Forward-ii sunt evaluati dupa versatilitate: puncte + recuperari
     return pointsPerGame * 1.5 + reboundsPerGame * 1.5 + fieldGoalPercentage * 10.0;
 }
 
+// cppcheck-suppress unusedFunction
 double Forward::getFieldGoalPercentage() const {
     return fieldGoalPercentage;
 }
