@@ -9,6 +9,7 @@
 
 using json = nlohmann::json;
 
+// cppcheck-suppress unusedFunction
 Sezon SezonLoader::incarcaDinFisier(const std::string& caleFisier) {
     std::ifstream fisier(caleFisier);
     if (!fisier.is_open())
