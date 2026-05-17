@@ -17,6 +17,7 @@ Contract& Contract::operator=(const Contract& other) {
 
 Contract::~Contract() {}
 
+// cppcheck-suppress unusedFunction
 double Contract::getRemainingValue(int yearsPlayed) const {
     int yearsLeft = durationYears - yearsPlayed;
     if (yearsLeft <= 0) return 0.0;

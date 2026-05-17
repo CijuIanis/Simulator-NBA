@@ -21,6 +21,7 @@ int Player::getAge() const { return age; }
 const std::string& Player::getPosition() const { return position; }
 double Player::getPointsPerGame() const { return pointsPerGame; }
 double Player::getAssistsPerGame() const { return assistsPerGame; }
+// cppcheck-suppress unusedFunction
 double Player::getReboundsPerGame() const { return reboundsPerGame; }
 const Contract& Player::getContract() const { return contract; }
 

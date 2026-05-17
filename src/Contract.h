@@ -14,10 +14,13 @@ public:
     Contract& operator=(const Contract& other);
     ~Contract();
 
+    // cppcheck-suppress unusedFunction
     double getSalaryPerYear() const { return salaryPerYear; }
     int getDurationYears() const { return durationYears; }
+    // cppcheck-suppress unusedFunction
     const std::string& getType() const { return type; }
     double getTotalValue() const { return salaryPerYear * durationYears; }
+    // cppcheck-suppress unusedFunction
     bool isMaxContract() const { return type == "MAX"; }
     double getRemainingValue(int yearsPlayed) const;
 
