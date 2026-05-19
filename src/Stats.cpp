@@ -1,9 +1,9 @@
 #include "Stats.h"
 #include <algorithm>
-#include <numeric>
 
 namespace Stats {
 
+    // cppcheck-suppress unusedFunction
     std::vector<const Player*> getTopJucatori(const std::vector<Echipa>& echipe, int n) {
         std::vector<const Player*> toti;
 
@@ -21,6 +21,7 @@ namespace Stats {
         return std::vector<const Player*>(toti.begin(), toti.begin() + n);
     }
 
+    // cppcheck-suppress unusedFunction
     MediaStatistici getMediaStatistici(const std::vector<Echipa>& echipe) {
         double totalPPG = 0.0, totalAPG = 0.0, totalRPG = 0.0, totalImpact = 0.0;
         int nrJucatori = 0;
@@ -46,6 +47,7 @@ namespace Stats {
         };
     }
 
+    // cppcheck-suppress unusedFunction
     RezultatComparatie compareEchipe(const Echipa& e1, const Echipa& e2) {
         double scor1 = e1.getScorImpact();
         double scor2 = e2.getScorImpact();

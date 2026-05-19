@@ -165,20 +165,20 @@ int main() {
     std::cout << "Salariu/an: " << c1.getSalaryPerYear() << "\n";
 
     std::cout << "\n--- Test Player ---\n";
-    Guard p("Test Player", 25, "PG", 20.0, 5.0, 5.0, c1, 0.38);
-    std::cout << "Pozitie: " << p.getPosition() << "\n";
-    std::cout << "Puncte: " << p.getPointsPerGame() << "\n";
-    std::cout << "Recuperari: " << p.getReboundsPerGame() << "\n";
-    std::cout << "Impact score: " << p.getImpactScore() << "\n";
-    std::cout << "Contract: " << p.getContract() << "\n";
-    std::cout << "Role Score: " << p.calculateRoleScore() << "\n";
+    Guard testGuard("Test Player", 25, "PG", 20.0, 5.0, 5.0, c1, 0.38);
+    std::cout << "Pozitie: " << testGuard.getPosition() << "\n";
+    std::cout << "Puncte: " << testGuard.getPointsPerGame() << "\n";
+    std::cout << "Recuperari: " << testGuard.getReboundsPerGame() << "\n";
+    std::cout << "Impact score: " << testGuard.getImpactScore() << "\n";
+    std::cout << "Contract: " << testGuard.getContract() << "\n";
+    std::cout << "Role Score: " << testGuard.calculateRoleScore() << "\n";
 
     std::cout << "\n--- Test comparare jucatori ---\n";
-    Guard p2("Test Player 2", 28, "SG", 25.0, 3.0, 4.0, c1, 0.42);
-    if (p2.getImpactScore() > p.getImpactScore())
-        std::cout << p2.getName() << " e mai bun decat " << p.getName() << "\n";
+    Guard testGuard2("Test Player 2", 28, "SG", 25.0, 3.0, 4.0, c1, 0.42);
+    if (testGuard2.getImpactScore() > testGuard.getImpactScore())
+        std::cout << testGuard2.getName() << " e mai bun decat " << testGuard.getName() << "\n";
     else
-        std::cout << p.getName() << " e mai bun decat " << p2.getName() << "\n";
+        std::cout << testGuard.getName() << " e mai bun decat " << testGuard2.getName() << "\n";
 
     std::cout << "\n--- Test Echipa ---\n";
     if (!season.empty() && !season[0].getEchipe().empty()) {
@@ -196,8 +196,8 @@ int main() {
         for (const auto& [conf, echipaList] : conferinte)
             std::cout << conf << ": " << echipaList.size() << " echipe\n";
     }
-    std::cout << "Varsta: " << p.getAge() << "\n";
-    std::cout << "Pase: " << p.getAssistsPerGame() << "\n";
+    std::cout << "Varsta: " << testGuard.getAge() << "\n";
+    std::cout << "Pase: " << testGuard.getAssistsPerGame() << "\n";
 
     if (!season.empty()) {
         std::cout << "Campioana: " << season[0].getCampioana() << "\n";
@@ -214,19 +214,12 @@ int main() {
     std::cout << "Salariu valid: " << Utilitati::isValidSalary(30.14) << "\n";
     std::cout << "Tip contract valid: " << Utilitati::isValidContractType("MAX") << "\n";
 
-    std::cout << "\n--- Test Exceptii ---\n";
-    try {
-        throw JucatorException("Test Player", "pozitie invalida: XX");
-    } catch (const NBAException& e) {
-        std::cout << "NBAException prins: " << e.what() << "\n";
-    }
-
     std::cout << "\n--- Test Stats ---\n";
     if (!season.empty()) {
         auto top5 = Stats::getTopJucatori(season[0].getEchipe(), 5);
         std::cout << "Top 5 jucatori:\n";
-        for (const auto* p : top5)
-            std::cout << "  " << p->getName() << " - " << formatNum(p->getImpactScore()) << "\n";
+        for (const auto* jucator : top5)
+            std::cout << "  " << jucator->getName() << " - " << formatNum(jucator->getImpactScore()) << "\n";
 
         auto media = Stats::getMediaStatistici(season[0].getEchipe());
         std::cout << "Media PPG: " << formatNum(media.mediaPPG) << "\n";
@@ -237,6 +230,13 @@ int main() {
             auto rez = Stats::compareEchipe(season[0].getEchipe()[0], season[0].getEchipe()[1]);
             std::cout << "Castigatoare: " << rez.castigatoare << "\n";
         }
+    }
+
+    std::cout << "\n--- Test Exceptii ---\n";
+    try {
+        throw JucatorException("Test Player", "pozitie invalida: XX");
+    } catch (const NBAException& e) {
+        std::cout << "NBAException prins: " << e.what() << "\n";
     }
 
     try {
