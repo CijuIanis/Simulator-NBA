@@ -17,7 +17,7 @@ double TwoWayPlayer::calculateRoleScore() const {
     return pointsPerGame * 1.0 + reboundsPerGame * 1.0 +
            assistsPerGame * 1.0 + defensiveRating * 2.0;
 }
-
+// cppcheck-suppress unusedFunction
 double TwoWayPlayer::getDefensiveRating() const {
     return defensiveRating;
 }
