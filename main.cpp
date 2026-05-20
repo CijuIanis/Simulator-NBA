@@ -14,6 +14,7 @@
 #include "Forward.h"
 #include "Center.h"
 #include "Stats.h"
+#include "TwoWayPlayer.h"
 
 std::string formatNum(double val) {
     std::ostringstream oss;
@@ -253,6 +254,12 @@ int main() {
             std::cout << "Valoare roster: $" << echipa.getValoareRoster() << "M\n";
         }
     }
+
+    std::cout << "\n--- Test TwoWayPlayer ---\n";
+    TwoWayPlayer tw("Kawhi Leonard", 28, "SF", 26.6, 3.3, 6.9, c1, 8.5);
+    std::cout << tw << "\n";
+    std::cout << "Role Score: " << tw.calculateRoleScore() << "\n";
+    std::cout << "Defensive Rating: " << tw.getDefensiveRating() << "\n";
 
     std::cout << "\n--- Test Exceptii ---\n";
     try {

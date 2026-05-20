@@ -63,6 +63,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         src/Center.h
         src/Stats.cpp
         src/Stats.h
+        src/TwoWayPlayer.cpp
+        src/TwoWayPlayer.h
 )
 target_sources(${MAIN_EXECUTABLE_NAME}
         PRIVATE
@@ -77,6 +79,7 @@ target_sources(${MAIN_EXECUTABLE_NAME}
         src/Forward.cpp
         src/Center.cpp
         src/Stats.cpp
+        src/TwoWayPlayer.cpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
