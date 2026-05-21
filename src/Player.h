@@ -39,5 +39,8 @@ public:
     bool isAllStar() const;
     std::string getStatLine() const;
 
+    // Returneaza categoria de varsta a jucatorului
+    std::string getSeniority() const;
+
     friend std::ostream& operator<<(std::ostream& os, const Player& player);
 };

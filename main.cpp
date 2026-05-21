@@ -173,6 +173,9 @@ int main() {
     std::cout << "Impact score: " << testGuard.getImpactScore() << "\n";
     std::cout << "Contract: " << testGuard.getContract() << "\n";
     std::cout << "Role Score: " << testGuard.calculateRoleScore() << "\n";
+    std::cout << "Seniority: " << testGuard.getSeniority() << "\n";
+    std::cout << "Contract expiring: " << c1.isExpiring() << "\n";
+
 
     std::cout << "\n--- Test comparare jucatori ---\n";
     Guard testGuard2("Test Player 2", 28, "SG", 25.0, 3.0, 4.0, c1, 0.42);
@@ -217,6 +220,15 @@ int main() {
 
     std::cout << "\n--- Test Stats ---\n";
     if (!season.empty()) {
+        auto topAllStars = Stats::getTopAllStars(season[0].getEchipe(), 3);
+        std::cout << "Top 3 All-Stars:\n";
+        for (const auto* jucator : topAllStars)
+            std::cout << "  " << jucator->getName() << " - " << formatNum(jucator->getImpactScore()) << "\n";
+
+        const Echipa* bestEchipa = Stats::getEchipaMaxImpact(season[0].getEchipe());
+        if (bestEchipa)
+            std::cout << "Echipa cu cel mai mare impact: " << bestEchipa->getNume() << "\n";
+
         auto top5 = Stats::getTopJucatori(season[0].getEchipe(), 5);
         std::cout << "Top 5 jucatori:\n";
         for (const auto* jucator : top5)

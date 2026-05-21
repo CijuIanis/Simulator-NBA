@@ -42,6 +42,15 @@ bool Player::isAllStar() const {
            (pointsPerGame >= 14.0 && reboundsPerGame >= 8.0);
 }
 
+// cppcheck-suppress unusedFunction
+std::string Player::getSeniority() const {
+    if (age > 32)
+        return "Veteran";
+    if (age >= 24)
+        return "Prime";
+    return "Young";
+}
+
 std::string Player::getStatLine() const {
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(1)

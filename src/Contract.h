@@ -23,6 +23,8 @@ public:
     double getTotalValue() const { return salaryPerYear * durationYears; }
     // cppcheck-suppress unusedFunction
     bool isMaxContract() const { return type == "MAX"; }
+    // cppcheck-suppress unusedFunction
+    bool isExpiring() const { return durationYears == 1; }
     double getRemainingValue(int yearsPlayed) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Contract& contract);

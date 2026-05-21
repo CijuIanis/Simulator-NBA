@@ -22,6 +22,37 @@ namespace Stats {
     }
 
     // cppcheck-suppress unusedFunction
+    std::vector<const Player*> getTopAllStars(const std::vector<Echipa>& echipe, int n) {
+        std::vector<const Player*> allStars;
+
+        for (const auto& echipa : echipe)
+            for (const auto& player : echipa.getRoster())
+                if (player->isAllStar())
+                    allStars.push_back(player.get());
+
+        std::sort(allStars.begin(), allStars.end(), [](const Player* a, const Player* b) {
+            return a->getImpactScore() > b->getImpactScore();
+        });
+
+        if (n > static_cast<int>(allStars.size()))
+            n = static_cast<int>(allStars.size());
+
+        return std::vector<const Player*>(allStars.begin(), allStars.begin() + n);
+    }
+
+    // cppcheck-suppress unusedFunction
+    const Echipa* getEchipaMaxImpact(const std::vector<Echipa>& echipe) {
+        if (echipe.empty())
+            return nullptr;
+
+        const Echipa* best = &echipe[0];
+        for (const auto& echipa : echipe)
+            if (echipa.getScorImpact() > best->getScorImpact())
+                best = &echipa;
+        return best;
+    }
+
+    // cppcheck-suppress unusedFunction
     MediaStatistici getMediaStatistici(const std::vector<Echipa>& echipe) {
         double totalPPG = 0.0, totalAPG = 0.0, totalRPG = 0.0, totalImpact = 0.0;
         int nrJucatori = 0;

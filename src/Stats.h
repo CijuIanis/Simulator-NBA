@@ -21,13 +21,19 @@ namespace Stats {
         std::string castigatoare;
     };
 
-    // returnez top N jucatori dupa impact score din toate echipele
+    // Returneaza top N jucatori dupa impact score din toate echipele
     std::vector<const Player*> getTopJucatori(const std::vector<Echipa>& echipe, int n);
 
-    // calculez media statisticilor din toate echipele unui sezon
+    // Returneaza top N jucatori All-Star dupa impact score
+    std::vector<const Player*> getTopAllStars(const std::vector<Echipa>& echipe, int n);
+
+    // Returneaza echipa cu cel mai mare scor de impact
+    const Echipa* getEchipaMaxImpact(const std::vector<Echipa>& echipe);
+
+    // Calculeaza media statisticilor din toate echipele unui sezon
     MediaStatistici getMediaStatistici(const std::vector<Echipa>& echipe);
 
-    // comparam doua echipe si returneaza rezultatul
+    // Compara doua echipe si returneaza rezultatul
     RezultatComparatie compareEchipe(const Echipa& e1, const Echipa& e2);
 
 }
