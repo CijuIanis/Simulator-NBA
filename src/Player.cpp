@@ -42,7 +42,6 @@ bool Player::isAllStar() const {
            (pointsPerGame >= 14.0 && reboundsPerGame >= 8.0);
 }
 
-// cppcheck-suppress unusedFunction
 std::string Player::getSeniority() const {
     if (age > 32)
         return "Veteran";
@@ -63,7 +62,7 @@ std::string Player::getStatLine() const {
 void Player::print(std::ostream& os) const {
     os << "[" << position << "] "
        << name
-       << " (age: " << age << ") | "
+       << " (age: " << age << ", " << getSeniority() << ") | "
        << getStatLine() << " | "
        << (isAllStar() ? "All-Star" : "Role Player") << "\n"
        << "  " << contract;

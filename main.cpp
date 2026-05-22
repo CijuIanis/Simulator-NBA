@@ -273,6 +273,10 @@ int main() {
 
         auto echipeEst = Stats::getEchipeConferinta(season[0].getEchipe(), "East");
         std::cout << "Echipe East: " << echipeEst.size() << "\n";
+        std::cout << "Nr jucatori expiring: " << season[0].getEchipe()[0].getNrJucatoriExpiring() << "\n";
+
+        auto veterani = season[0].getJucatoriVeterani();
+        std::cout << "Nr veterani in sezon: " << veterani.size() << "\n";
     }
 
     std::cout << "\n--- Test TwoWayPlayer ---\n";

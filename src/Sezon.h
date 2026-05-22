@@ -15,7 +15,6 @@ private:
 public:
     Sezon(const std::string& an, const std::string& campioana);
 
-    const Player* getCelMaiBunForward() const;
     const std::string& getAn() const;
     const std::string& getCampioana() const;
     int getNrEchipe() const;
@@ -26,16 +25,14 @@ public:
     const Player& getCelMaiBunJucatorDinSezon() const;
     void afiseazaClassament() const;
 
-    // Cauta un jucator dupa nume in toate echipele
     const Player* gasesteJucator(const std::string& nume) const;
-
-    // Returneaza cel mai bun Guard din sezon
     const Player* getCelMaiBunGuard() const;
-
-    // Returneaza cel mai bun Center din sezon
+    const Player* getCelMaiBunForward() const;
     const Player* getCelMaiBunCenter() const;
 
-    // STL: grupeaza echipele dupa conferinta (East/West)
+    // Returneaza toti jucatorii Veteran din sezon
+    std::vector<const Player*> getJucatoriVeterani() const;
+
     std::map<std::string, std::vector<const Echipa*>> getEchipeDupaConferinta() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Sezon& sezon);

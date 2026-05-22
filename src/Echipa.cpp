@@ -87,6 +87,15 @@ bool Echipa::isContender() const {
     return getNrAllStars() >= 2;
 }
 
+// cppcheck-suppress unusedFunction
+int Echipa::getNrJucatoriExpiring() const {
+    int count = 0;
+    for (const auto& player : roster)
+        if (player->getContract().isExpiring())
+            count++;
+    return count;
+}
+
 double Echipa::getValoareRoster() const {
     double total = 0.0;
     for (const auto& player : roster)

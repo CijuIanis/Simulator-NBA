@@ -41,6 +41,8 @@ public:
     int getNrAllStars() const;
     // returneaza true daca echipa are minim 2 All-Stars
     bool isContender() const;
+    // numarul de jucatori cu contract expiring
+    int getNrJucatoriExpiring() const;
     double getValoareRoster() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Echipa& echipa);
