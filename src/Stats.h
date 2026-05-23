@@ -21,16 +21,22 @@ namespace Stats {
         std::string castigatoare;
     };
 
+    struct RezultatPlayoff {
+        std::string campioanaEast;
+        std::string campioanaWest;
+        std::string campioanaFinals;
+        std::vector<std::string> rezultateRunde;
+    };
+
     std::vector<const Player*> getTopJucatori(const std::vector<Echipa>& echipe, int n);
-
-    // returneaza top N jucatori All-Star in functie impact score
     std::vector<const Player*> getTopAllStars(const std::vector<Echipa>& echipe, int n);
-
-    // returneaza echipa cu cel mai mare scor de impact
     const Echipa* getEchipaMaxImpact(const std::vector<Echipa>& echipe);
     const Echipa* simulateMeci(const Echipa& e1, const Echipa& e2);
     std::vector<const Echipa*> getEchipeConferinta(const std::vector<Echipa>& echipe, const std::string& conferinta);
     MediaStatistici getMediaStatistici(const std::vector<Echipa>& echipe);
     RezultatComparatie compareEchipe(const Echipa& e1, const Echipa& e2);
+
+    // Simuleaza playoff-ul NBA complet (top 8 East vs top 8 West)
+    RezultatPlayoff simulatePlayoff(const std::vector<Echipa>& echipe);
 
 }

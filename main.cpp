@@ -51,7 +51,7 @@ int main() {
         std::cout << "Sezoane disponibile:\n";
         for (auto i = 0u; i < season.size(); i++)
             std::cout << "  " << season[i].getAn() << "\n";
-        std::cout << "\nIntroduceti comanda [anul sezonului (ex:'2022-23') / 'compara' / 'exit']: ";
+        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'exit']: ";
 
         std::string input;
         std::cin >> input;
@@ -124,6 +124,27 @@ int main() {
             continue;
         }
 
+        if (input == "playoff") {
+            std::cout << "Introduceti anul sezonului: ";
+            std::string an;
+            std::cin >> an;
+
+            bool gasit = false;
+            for (const auto& sezon : season) {
+                if (sezon.getAn() == an) {
+                    gasit = true;
+                    auto rez = Stats::simulatePlayoff(sezon.getEchipe());
+                    for (const auto& linie : rez.rezultateRunde)
+                        std::cout << linie << "\n";
+                    std::cout << "\nCAMPIOANA NBA: " << rez.campioanaFinals << "\n";
+                    break;
+                }
+            }
+            if (!gasit)
+                std::cerr << "Sezonul '" << an << "' nu a fost gasit!\n";
+            continue;
+        }
+
         try {
             bool gasit = false;
             for (const auto& sezon : season) {
@@ -175,7 +196,6 @@ int main() {
     std::cout << "Role Score: " << testGuard.calculateRoleScore() << "\n";
     std::cout << "Seniority: " << testGuard.getSeniority() << "\n";
     std::cout << "Contract expiring: " << c1.isExpiring() << "\n";
-
 
     std::cout << "\n--- Test comparare jucatori ---\n";
     Guard testGuard2("Test Player 2", 28, "SG", 25.0, 3.0, 4.0, c1, 0.42);
@@ -248,6 +268,13 @@ int main() {
             auto echipeVest = Stats::getEchipeConferinta(season[0].getEchipe(), "West");
             std::cout << "East: " << echipeEst.size() << " echipe | West: " << echipeVest.size() << " echipe\n";
         }
+
+        // Test simulare playoff
+        auto rez = Stats::simulatePlayoff(season[0].getEchipe());
+        std::cout << "\nSimulare Playoff " << season[0].getAn() << ":\n";
+        std::cout << "Campioana East: " << rez.campioanaEast << "\n";
+        std::cout << "Campioana West: " << rez.campioanaWest << "\n";
+        std::cout << "Campioana NBA: " << rez.campioanaFinals << "\n";
     }
 
     std::cout << "\n--- Test functii noi ---\n";
@@ -273,8 +300,10 @@ int main() {
         std::cout << "Nr All-Stars: " << season[0].getEchipe()[0].getNrAllStars() << "\n";
         std::cout << "Este contender: " << season[0].getEchipe()[0].isContender() << "\n";
 
-        const Echipa* castigatoare = Stats::simulateMeci(season[0].getEchipe()[0], season[0].getEchipe()[1]);
-        std::cout << "Castigatoarea meciului: " << castigatoare->getNume() << "\n";
+        if (season[0].getEchipe().size() >= 2) {
+            const Echipa* castigatoare = Stats::simulateMeci(season[0].getEchipe()[0], season[0].getEchipe()[1]);
+            std::cout << "Castigatoarea meciului: " << castigatoare->getNume() << "\n";
+        }
 
         auto echipeEst = Stats::getEchipeConferinta(season[0].getEchipe(), "East");
         std::cout << "Echipe East: " << echipeEst.size() << "\n";
@@ -282,7 +311,6 @@ int main() {
 
         auto veterani = season[0].getJucatoriVeterani();
         std::cout << "Nr veterani in sezon: " << veterani.size() << "\n";
-
     }
 
     std::cout << "\n--- Test TwoWayPlayer ---\n";
