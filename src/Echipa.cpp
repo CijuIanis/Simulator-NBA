@@ -13,12 +13,15 @@ double Echipa::calculeazaSalariiTotale() const {
 }
 
 Echipa::Echipa(const std::string& nume, const std::string& oras,
-               const std::string& conferinta, double salaryCap)
-    : nume(nume), oras(oras), conferinta(conferinta), salaryCap(salaryCap) {}
+               const std::string& conferinta, double salaryCap,
+               const std::string& logoPath)
+    : nume(nume), oras(oras), conferinta(conferinta),
+      salaryCap(salaryCap), logoPath(logoPath) {}
 
 Echipa::Echipa(const Echipa& other)
     : nume(other.nume), oras(other.oras),
-      conferinta(other.conferinta), salaryCap(other.salaryCap) {
+      conferinta(other.conferinta), salaryCap(other.salaryCap),
+      logoPath(other.logoPath) {
     for (const auto& player : other.roster)
         roster.push_back(std::unique_ptr<Player>(player->clone()));
 }
@@ -28,6 +31,7 @@ void swap(Echipa& a, Echipa& b) noexcept {
     std::swap(a.oras, b.oras);
     std::swap(a.conferinta, b.conferinta);
     std::swap(a.salaryCap, b.salaryCap);
+    std::swap(a.logoPath, b.logoPath);
     std::swap(a.roster, b.roster);
 }
 

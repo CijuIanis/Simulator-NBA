@@ -2,7 +2,6 @@
 #include <algorithm>
 
 namespace Stats {
-
     // cppcheck-suppress unusedFunction
     std::vector<const Player*> getTopJucatori(const std::vector<Echipa>& echipe, int n) {
         std::vector<const Player*> toti;
@@ -107,5 +106,4 @@ namespace Stats {
 
         return {e1.getNume(), e2.getNume(), scor1, scor2, castigatoare};
     }
-
 }

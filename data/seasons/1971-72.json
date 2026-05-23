@@ -7,6 +7,7 @@
       "oras": "Los Angeles",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/lackers.png",
       "jucatori": [
         {
           "nume": "Jerry West",
@@ -171,6 +172,7 @@
       "oras": "Milwaukee",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/bucks.png",
       "jucatori": [
         {
           "nume": "Kareem Abdul-Jabbar",
@@ -335,6 +337,7 @@
       "oras": "New York",
       "conferinta": "East",
       "salaryCap": 20.0,
+      "logo": "assets/logos/knicks.png",
       "jucatori": [
         {
           "nume": "Walt Frazier",
@@ -499,6 +502,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 20.0,
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "John Havlicek",
@@ -663,6 +667,7 @@
       "oras": "Golden State",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/warriors.png",
       "jucatori": [
         {
           "nume": "Nate Thurmond",
@@ -827,6 +832,7 @@
       "oras": "Chicago",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/bulls.png",
       "jucatori": [
         {
           "nume": "Chet Walker",
@@ -991,6 +997,7 @@
       "oras": "Phoenix",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/suns.png",
       "jucatori": [
         {
           "nume": "Connie Hawkins",
@@ -1155,6 +1162,7 @@
       "oras": "Baltimore",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/wizards.png",
       "jucatori": [
         {
           "nume": "Elvin Hayes",
@@ -1319,6 +1327,7 @@
       "oras": "Philadelphia",
       "conferinta": "East",
       "salaryCap": 20.0,
+      "logo": "assets/logos/76ers.png",
       "jucatori": [
         {
           "nume": "Billy Cunningham",
@@ -1483,6 +1492,7 @@
       "oras": "Detroit",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/pistons.png",
       "jucatori": [
         {
           "nume": "Bob Lanier",
@@ -1647,6 +1657,7 @@
       "oras": "Cincinnati",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/kings.png",
       "jucatori": [
         {
           "nume": "Nate Archibald",
@@ -1811,6 +1822,7 @@
       "oras": "Atlanta",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Lou Hudson",
@@ -1975,6 +1987,7 @@
       "oras": "Portland",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/trail_blazers.png",
       "jucatori": [
         {
           "nume": "Geoff Petrie",
@@ -2139,6 +2152,7 @@
       "oras": "Seattle",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/thunder.png",
       "jucatori": [
         {
           "nume": "Spencer Haywood",
@@ -2303,6 +2317,7 @@
       "oras": "Cleveland",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/cavaliers.png",
       "jucatori": [
         {
           "nume": "Austin Carr",
@@ -2467,6 +2482,7 @@
       "oras": "Buffalo",
       "conferinta": "East",
       "salaryCap": 20.0,
+      "logo": "assets/logos/clippers.png",
       "jucatori": [
         {
           "nume": "Bob Kauffman",
@@ -2631,6 +2647,7 @@
       "oras": "Houston",
       "conferinta": "West",
       "salaryCap": 20.0,
+      "logo": "assets/logos/rockets.png",
       "jucatori": [
         {
           "nume": "Rudy Tomjanovich",

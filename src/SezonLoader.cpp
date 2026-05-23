@@ -27,11 +27,16 @@ Sezon SezonLoader::incarcaDinFisier(const std::string& caleFisier) {
     Sezon sezon(an, campioana);
 
     for (const auto& eJson : date["echipe"]) {
+        std::string logoPath = "";
+        if (eJson.contains("logo"))
+            logoPath = eJson["logo"];
+
         Echipa echipa(
             eJson["nume"],
             eJson["oras"],
             eJson["conferinta"],
-            eJson["salaryCap"]
+            eJson["salaryCap"],
+            logoPath
         );
 
         for (const auto& jJson : eJson["jucatori"]) {

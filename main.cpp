@@ -191,6 +191,7 @@ int main() {
         std::cout << "Salary Cap: " << e.getSalaryCap() << "\n";
         std::cout << "Nr jucatori: " << e.getRoster().size() << "\n";
         std::cout << "Contracte MAX: " << e.getNrJucatoriMaxContract() << "\n";
+        std::cout << "Logo: " << season[0].getEchipe()[0].getLogoPath() << "\n";
     }
 
     std::cout << "\n--- Test Sezon ---\n";
@@ -240,8 +241,12 @@ int main() {
         std::cout << "Media RPG: " << formatNum(media.mediaRPG) << "\n";
 
         if (season[0].getEchipe().size() >= 2) {
-            auto rez = Stats::compareEchipe(season[0].getEchipe()[0], season[0].getEchipe()[1]);
-            std::cout << "Castigatoare: " << rez.castigatoare << "\n";
+            const Echipa* castigatoare = Stats::simulateMeci(season[0].getEchipe()[0], season[0].getEchipe()[1]);
+            std::cout << "Simulare meci: " << castigatoare->getNume() << " castiga!\n";
+
+            auto echipeEst = Stats::getEchipeConferinta(season[0].getEchipe(), "East");
+            auto echipeVest = Stats::getEchipeConferinta(season[0].getEchipe(), "West");
+            std::cout << "East: " << echipeEst.size() << " echipe | West: " << echipeVest.size() << " echipe\n";
         }
     }
 
@@ -277,6 +282,7 @@ int main() {
 
         auto veterani = season[0].getJucatoriVeterani();
         std::cout << "Nr veterani in sezon: " << veterani.size() << "\n";
+
     }
 
     std::cout << "\n--- Test TwoWayPlayer ---\n";

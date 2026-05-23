@@ -11,13 +11,15 @@ private:
     std::string oras;
     std::string conferinta;
     double salaryCap;
+    std::string logoPath;
     std::vector<std::unique_ptr<Player>> roster;
 
     double calculeazaSalariiTotale() const;
 
 public:
     Echipa(const std::string& nume, const std::string& oras,
-           const std::string& conferinta, double salaryCap);
+           const std::string& conferinta, double salaryCap,
+           const std::string& logoPath = "");
 
     Echipa(const Echipa& other);
     Echipa& operator=(Echipa other);
@@ -27,6 +29,8 @@ public:
     const std::string& getOras() const;
     const std::string& getConferinta() const;
     double getSalaryCap() const;
+    // cppcheck-suppress unusedFunction
+    const std::string& getLogoPath() const { return logoPath; }
     const std::vector<std::unique_ptr<Player>>& getRoster() const;
 
     void adaugaJucator(const Player& player);

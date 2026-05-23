@@ -7,6 +7,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Larry Bird",
@@ -171,6 +172,7 @@
       "oras": "Houston",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/rockets.png",
       "jucatori": [
         {
           "nume": "Hakeem Olajuwon",
@@ -335,6 +337,7 @@
       "oras": "Los Angeles",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/lackers.png",
       "jucatori": [
         {
           "nume": "Magic Johnson",
@@ -499,6 +502,7 @@
       "oras": "Philadelphia",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/76ers.png",
       "jucatori": [
         {
           "nume": "Julius Erving",
@@ -663,6 +667,7 @@
       "oras": "Chicago",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/bulls.png",
       "jucatori": [
         {
           "nume": "Michael Jordan",
@@ -827,6 +832,7 @@
       "oras": "Milwaukee",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/bucks.png",
       "jucatori": [
         {
           "nume": "Terry Cummings",
@@ -991,6 +997,7 @@
       "oras": "Detroit",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/pistons.png",
       "jucatori": [
         {
           "nume": "Isiah Thomas",
@@ -1155,6 +1162,7 @@
       "oras": "New York",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/knicks.png",
       "jucatori": [
         {
           "nume": "Patrick Ewing",
@@ -1319,6 +1327,7 @@
       "oras": "San Antonio",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/spurs.png",
       "jucatori": [
         {
           "nume": "Alvin Robertson",
@@ -1483,6 +1492,7 @@
       "oras": "Utah",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/jazz.png",
       "jucatori": [
         {
           "nume": "Karl Malone",
@@ -1647,6 +1657,7 @@
       "oras": "Phoenix",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/suns.png",
       "jucatori": [
         {
           "nume": "Walter Davis",
@@ -1811,6 +1822,7 @@
       "oras": "Denver",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/nuggets.png",
       "jucatori": [
         {
           "nume": "Alex English",
@@ -1975,6 +1987,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Dominique Wilkins",
@@ -2139,6 +2152,7 @@
       "oras": "Cleveland",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/cavaliers.png",
       "jucatori": [
         {
           "nume": "World B. Free",
@@ -2303,6 +2317,7 @@
       "oras": "Dallas",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/mavericks.png",
       "jucatori": [
         {
           "nume": "Mark Aguirre",
@@ -2467,6 +2482,7 @@
       "oras": "Indiana",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/pacers.png",
       "jucatori": [
         {
           "nume": "Clark Kellogg",
@@ -2631,6 +2647,7 @@
       "oras": "New Jersey",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/nets.png",
       "jucatori": [
         {
           "nume": "Buck Williams",
@@ -2795,6 +2812,7 @@
       "oras": "Portland",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/trail_blazers.png",
       "jucatori": [
         {
           "nume": "Kiki Vandeweghe",
@@ -2959,6 +2977,7 @@
       "oras": "Sacramento",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/kings.png",
       "jucatori": [
         {
           "nume": "Reggie Theus",
@@ -3123,6 +3142,7 @@
       "oras": "Los Angeles",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/clippers.png",
       "jucatori": [
         {
           "nume": "Derek Smith",
@@ -3287,6 +3307,7 @@
       "oras": "Washington",
       "conferinta": "East",
       "salaryCap": 35.0,
+      "logo": "assets/logos/wizards.png",
       "jucatori": [
         {
           "nume": "Jeff Ruland",
@@ -3451,6 +3472,7 @@
       "oras": "Golden State",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/warriors.png",
       "jucatori": [
         {
           "nume": "Purvis Short",
@@ -3615,6 +3637,7 @@
       "oras": "Seattle",
       "conferinta": "West",
       "salaryCap": 35.0,
+      "logo": "assets/logos/thunder.png",
       "jucatori": [
         {
           "nume": "Jack Sikma",

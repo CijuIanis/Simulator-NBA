@@ -7,6 +7,7 @@
       "oras": "Los Angeles",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/lakers.png",
       "jucatori": [
         {
           "nume": "Shaquille O'Neal",
@@ -171,6 +172,7 @@
       "oras": "Indiana",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/pacers.png",
       "jucatori": [
         {
           "nume": "Reggie Miller",
@@ -335,6 +337,7 @@
       "oras": "Portland",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/trail_blazers.png",
       "jucatori": [
         {
           "nume": "Rasheed Wallace",
@@ -499,6 +502,7 @@
       "oras": "San Antonio",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/spurs.png",
       "jucatori": [
         {
           "nume": "Tim Duncan",
@@ -663,6 +667,7 @@
       "oras": "Miami",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/heat.png",
       "jucatori": [
         {
           "nume": "Alonzo Mourning",
@@ -827,6 +832,7 @@
       "oras": "New York",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/knicks.png",
       "jucatori": [
         {
           "nume": "Patrick Ewing",
@@ -991,6 +997,7 @@
       "oras": "Milwaukee",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/bucks.png",
       "jucatori": [
         {
           "nume": "Ray Allen",
@@ -1155,6 +1162,7 @@
       "oras": "Utah",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/jazz.png",
       "jucatori": [
         {
           "nume": "Karl Malone",
@@ -1319,6 +1327,7 @@
       "oras": "Phoenix",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/suns.png",
       "jucatori": [
         {
           "nume": "Jason Kidd",
@@ -1483,6 +1492,7 @@
       "oras": "Philadelphia",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/76ers.png",
       "jucatori": [
         {
           "nume": "Allen Iverson",
@@ -1647,6 +1657,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Paul Pierce",
@@ -1811,6 +1822,7 @@
       "oras": "Toronto",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/raptors.png",
       "jucatori": [
         {
           "nume": "Vince Carter",
@@ -1975,6 +1987,7 @@
       "oras": "Cleveland",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/cavaliers.png",
       "jucatori": [
         {
           "nume": "Andre Miller",
@@ -2139,6 +2152,7 @@
       "oras": "Houston",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/rockets.png",
       "jucatori": [
         {
           "nume": "Hakeem Olajuwon",
@@ -2303,6 +2317,7 @@
       "oras": "Denver",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/nuggets.png",
       "jucatori": [
         {
           "nume": "Nick Van Exel",
@@ -2463,10 +2478,11 @@
       ]
     },
     {
-      "nume": "Nets",
+      "nume": " Nets",
       "oras": "New Jersey",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/nets.png",
       "jucatori": [
         {
           "nume": "Stephon Marbury",
@@ -2631,6 +2647,7 @@
       "oras": "Sacramento",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/kings.png",
       "jucatori": [
         {
           "nume": "Chris Webber",
@@ -2795,6 +2812,7 @@
       "oras": "Dallas",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/mavericks.png",
       "jucatori": [
         {
           "nume": "Dirk Nowitzki",
@@ -2959,6 +2977,7 @@
       "oras": "Los Angeles",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/clippers.png",
       "jucatori": [
         {
           "nume": "Lamar Odom",
@@ -3123,6 +3142,7 @@
       "oras": "Detroit",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/pistons.png",
       "jucatori": [
         {
           "nume": "Grant Hill",
@@ -3287,6 +3307,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Dikembe Mutombo",
@@ -3451,6 +3472,7 @@
       "oras": "Washington",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/wizards.png",
       "jucatori": [
         {
           "nume": "Richard Hamilton",
@@ -3615,6 +3637,7 @@
       "oras": "Golden State",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/warriors.png",
       "jucatori": [
         {
           "nume": "Antawn Jamison",
@@ -3779,6 +3802,7 @@
       "oras": "Minnesota",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/timberwolves.png",
       "jucatori": [
         {
           "nume": "Kevin Garnett",
@@ -3943,6 +3967,7 @@
       "oras": "Orlando",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/magic.png",
       "jucatori": [
         {
           "nume": "Tracy McGrady",
@@ -4107,6 +4132,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/hornets.png",
       "jucatori": [
         {
           "nume": "Baron Davis",
@@ -4271,6 +4297,7 @@
       "oras": "Chicago",
       "conferinta": "East",
       "salaryCap": 65.0,
+      "logo": "assets/logos/bulls.png",
       "jucatori": [
         {
           "nume": "Ron Artest",
@@ -4435,6 +4462,7 @@
       "oras": "Vancouver",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/grizzlies.png",
       "jucatori": [
         {
           "nume": "Shareef Abdur-Rahim",
@@ -4599,6 +4627,7 @@
       "oras": "Seattle",
       "conferinta": "West",
       "salaryCap": 65.0,
+      "logo": "assets/logos/thunder.png",
       "jucatori": [
         {
           "nume": "Gary Payton",
