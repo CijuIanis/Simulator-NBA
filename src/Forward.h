@@ -14,9 +14,7 @@ public:
             double fieldGoalPercentage);
 
     Forward* clone() const override;
-
-    // Scorul specific unui Forward: bazat pe versatilitate (puncte + recuperari)
     double calculateRoleScore() const override;
-
+    std::string getRoleDescription() const override;
     double getFieldGoalPercentage() const;
 };

@@ -14,9 +14,7 @@ public:
            double blocksPerGame);
 
     Center* clone() const override;
-
-    // Scorul specific unui Center: bazat pe recuperari si blocaje
     double calculateRoleScore() const override;
-
+    std::string getRoleDescription() const override;
     double getBlocksPerGame() const;
 };

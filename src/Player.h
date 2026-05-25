@@ -27,6 +27,9 @@ public:
     virtual Player* clone() const = 0;
     virtual double calculateRoleScore() const = 0;
 
+    // returneaza descrierea rolului specific - fiecare clasa derivata are o logics diferita
+    virtual std::string getRoleDescription() const = 0;
+
     const std::string& getName() const;
     int getAge() const;
     const std::string& getPosition() const;
@@ -39,7 +42,6 @@ public:
     bool isAllStar() const;
     std::string getStatLine() const;
 
-    // Returneaza categoria de varsta a jucatorului
     std::string getSeniority() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Player& player);

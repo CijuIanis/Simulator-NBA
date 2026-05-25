@@ -15,4 +15,5 @@ public:
 
     Guard* clone() const override;
     double calculateRoleScore() const override;
+    std::string getRoleDescription() const override;
 };

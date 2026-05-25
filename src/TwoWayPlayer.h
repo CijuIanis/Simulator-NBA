@@ -14,9 +14,7 @@ public:
                  double defensiveRating);
 
     TwoWayPlayer* clone() const override;
-
-    // Scorul specific unui TwoWayPlayer: ofensiv + defensiv
     double calculateRoleScore() const override;
-
+    std::string getRoleDescription() const override;
     double getDefensiveRating() const;
 };
