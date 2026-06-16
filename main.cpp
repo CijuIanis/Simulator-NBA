@@ -14,6 +14,7 @@
 #include "Forward.h"
 #include "Center.h"
 #include "Stats.h"
+#include "StatLeader.h"
 #include "TwoWayPlayer.h"
 
 std::string formatNum(double val) {
@@ -269,12 +270,39 @@ int main() {
             std::cout << "East: " << echipeEst.size() << " echipe | West: " << echipeVest.size() << " echipe\n";
         }
 
-        // Test simulare playoff
+        // test simulare playoff
         auto rez = Stats::simulatePlayoff(season[0].getEchipe());
         std::cout << "\nSimulare Playoff " << season[0].getAn() << ":\n";
         std::cout << "Campioana East: " << rez.campioanaEast << "\n";
         std::cout << "Campioana West: " << rez.campioanaWest << "\n";
         std::cout << "Campioana NBA: " << rez.campioanaFinals << "\n";
+    }
+
+    std::cout << "\n--- Test StatLeader<T> ---\n";
+    if (!season.empty()) {
+        const auto& echipe = season[0].getEchipe();
+
+        // double -> lider jucator la puncte/meci
+        Stats::StatLeader<double> liderPuncte(
+            "Puncte/meci", [](const Player& p) { return p.getPointsPerGame(); });
+        if (const Player* top = liderPuncte.getLider(echipe))
+            std::cout << "Lider " << liderPuncte.getNumeStatistica() << ": "
+                      << top->getName() << " ("
+                      << formatNum(liderPuncte.getValoare(*top)) << ")\n";
+
+        // double -> top 3 jucatori la impact
+        Stats::StatLeader<double> liderImpact(
+            "Impact", [](const Player& p) { return p.getImpactScore(); });
+        std::cout << "Top 3 impact:\n";
+        for (const auto& [player, val] : liderImpact.getTopN(echipe, 3))
+            std::cout << "  " << player->getName() << " - " << formatNum(val) << "\n";
+
+        // int -> acelasi template
+        Stats::StatLeader<int> liderVarsta(
+            "Varsta", [](const Player& p) { return p.getAge(); });
+        std::cout << "Top 3 ca varsta:\n";
+        for (const auto& [player, varsta] : liderVarsta.getTopN(echipe, 3))
+            std::cout << "  " << player->getName() << " - " << varsta << " ani\n";
     }
 
     std::cout << "\n--- Test functii noi ---\n";
