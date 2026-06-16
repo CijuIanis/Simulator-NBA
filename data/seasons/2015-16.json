@@ -1162,7 +1162,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 85.0,
-      "logo": "assets/logos/celtics.png",
+      "logo": "assets/logos/boston-celtics-logo.png",
       "jucatori": [
         {
           "nume": "Isaiah Thomas",
@@ -1327,7 +1327,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 85.0,
-      "logo": "assets/logos/hawks.png",
+      "logo": "assets/logos/atlanta-hawks-logo.png",
       "jucatori": [
         {
           "nume": "Paul Millsap",
@@ -2482,7 +2482,7 @@
       "oras": "Brooklyn",
       "conferinta": "East",
       "salaryCap": 85.0,
-      "logo": "assets/logos/nets.png",
+      "logo": "assets/logos/brooklyn-nets-logo.png",
       "jucatori": [
         {
           "nume": "Brook Lopez",
@@ -4792,7 +4792,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 85.0,
-      "logo": "assets/logos/hornets.png",
+      "logo": "assets/logos/horbrooklyn-nets-logo.png",
       "jucatori": [
         {
           "nume": "Al Jefferson",

@@ -1657,7 +1657,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 65.0,
-      "logo": "assets/logos/celtics.png",
+      "logo": "assets/logos/boston-celtics-logo.png",
       "jucatori": [
         {
           "nume": "Paul Pierce",
@@ -2482,7 +2482,7 @@
       "oras": "New Jersey",
       "conferinta": "East",
       "salaryCap": 65.0,
-      "logo": "assets/logos/nets.png",
+      "logo": "assets/logos/brooklyn-nets-logo.png",
       "jucatori": [
         {
           "nume": "Stephon Marbury",
@@ -3307,7 +3307,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 65.0,
-      "logo": "assets/logos/hawks.png",
+      "logo": "assets/logos/atlanta-hawks-logo.png",
       "jucatori": [
         {
           "nume": "Dikembe Mutombo",
@@ -4132,7 +4132,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 65.0,
-      "logo": "assets/logos/hornets.png",
+      "logo": "assets/logos/horbrooklyn-nets-logo.png",
       "jucatori": [
         {
           "nume": "Baron Davis",
