@@ -16,6 +16,8 @@
 #include "Center.h"
 #include "Stats.h"
 #include "StatLeader.h"
+#include "SezonSimulator.h"
+#include "Observatori.h"
 #include "TwoWayPlayer.h"
 
 std::string formatNum(double val) {
@@ -38,7 +40,7 @@ int main() {
         std::cout << "Sezoane disponibile:\n";
         for (auto i = 0u; i < season.size(); i++)
             std::cout << "  " << season[i].getAn() << "\n";
-        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'exit']: ";
+        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'simulare' / 'exit']: ";
 
         std::string input;
         std::cin >> input;
@@ -119,6 +121,29 @@ int main() {
             for (const auto& linie : rez.rezultateRunde)
                 std::cout << linie << "\n";
             std::cout << "\nCAMPIOANA NBA: " << rez.campioanaFinals << "\n";
+            continue;
+        }
+
+        if (input == "simulare") {
+            std::cout << "Introduceti anul sezonului: ";
+            std::string an;
+            std::cin >> an;
+
+            const Sezon* sezonGasit = liga.gasesteSezon(an);
+            if (!sezonGasit) {
+                std::cerr << "Sezonul '" << an << "' nu a fost gasit!\n";
+                continue;
+            }
+
+            SezonSimulator simulator;
+            LoggerConsola logger;
+            ColectorStatistici colector;
+            simulator.adaugaObserver(&logger);
+            simulator.adaugaObserver(&colector);
+
+            std::string campioana = simulator.simuleaza(sezonGasit->getEchipe(), an);
+            colector.afiseazaRaport();
+            std::cout << "\nCampioana finala: " << campioana << "\n";
             continue;
         }
 
@@ -241,7 +266,6 @@ int main() {
             std::cout << "East: " << echipeEst.size() << " echipe | West: " << echipeVest.size() << " echipe\n";
         }
 
-        // Test simulare playoff
         auto rez = Stats::simulatePlayoff(season[0].getEchipe());
         std::cout << "\nSimulare Playoff " << season[0].getAn() << ":\n";
         std::cout << "Campioana East: " << rez.campioanaEast << "\n";
@@ -253,7 +277,6 @@ int main() {
     if (!season.empty()) {
         const auto& echipe = season[0].getEchipe();
 
-        // double -> lider la puncte/meci
         Stats::StatLeader<double> liderPuncte(
             "Puncte/meci", [](const Player& p) { return p.getPointsPerGame(); });
         if (const Player* top = liderPuncte.getLider(echipe))
@@ -261,14 +284,12 @@ int main() {
                       << top->getName() << " ("
                       << formatNum(liderPuncte.getValoare(*top)) << ")\n";
 
-        // double -> top 3 la impact
         Stats::StatLeader<double> liderImpact(
             "Impact", [](const Player& p) { return p.getImpactScore(); });
         std::cout << "Top 3 impact:\n";
         for (const auto& [player, val] : liderImpact.getTopN(echipe, 3))
             std::cout << "  " << player->getName() << " - " << formatNum(val) << "\n";
 
-        // int -> acelasi template, alt tip (demonstreaza ca e generic)
         Stats::StatLeader<int> liderVarsta(
             "Varsta", [](const Player& p) { return p.getAge(); });
         std::cout << "Top 3 ca varsta:\n";

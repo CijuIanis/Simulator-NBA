@@ -68,6 +68,11 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         src/StatLeader.h
         src/NBALeague.cpp
         src/NBALeague.h
+        src/Observer.h
+        src/SezonSimulator.cpp
+        src/SezonSimulator.h
+        src/Observatori.cpp
+        src/Observatori.h
 )
 target_sources(${MAIN_EXECUTABLE_NAME}
         PRIVATE
