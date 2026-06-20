@@ -19,7 +19,7 @@
 #include "SezonSimulator.h"
 #include "Observatori.h"
 #include "TwoWayPlayer.h"
-//doar un comentariu pentru commit
+
 std::string formatNum(double val) {
     std::ostringstream oss;
     double decimala = val - static_cast<int>(val);
@@ -40,7 +40,7 @@ int main() {
         std::cout << "Sezoane disponibile:\n";
         for (auto i = 0u; i < season.size(); i++)
             std::cout << "  " << season[i].getAn() << "\n";
-        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'simulare' / 'exit']: ";
+        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'simulare' / 'allstars' / 'exit']: ";
 
         std::string input;
         std::cin >> input;
@@ -144,6 +144,44 @@ int main() {
             std::string campioana = simulator.simuleaza(sezonGasit->getEchipe(), an);
             colector.afiseazaRaport();
             std::cout << "\nCampioana finala: " << campioana << "\n";
+            continue;
+        }
+
+        if (input == "allstars") {
+            std::cout << "Introduceti anul sezonului: ";
+            std::string an;
+            std::cin >> an;
+
+            const Sezon* sezonGasit = liga.gasesteSezon(an);
+            if (!sezonGasit) {
+                std::cerr << "Sezonul '" << an << "' nu a fost gasit!\n";
+                continue;
+            }
+
+            auto allStars = Stats::getTopAllStars(sezonGasit->getEchipe(), 25);
+
+            tabulate::Table tabel;
+            tabel.add_row({"#", "Jucator", "Pozitie", "PPG", "APG", "RPG", "Impact"});
+            int rank = 1;
+            for (const Player* p : allStars) {
+                tabel.add_row({
+                    std::to_string(rank++),
+                    p->getName(),
+                    p->getPosition(),
+                    formatNum(p->getPointsPerGame()),
+                    formatNum(p->getAssistsPerGame()),
+                    formatNum(p->getReboundsPerGame()),
+                    formatNum(p->getImpactScore())
+                });
+            }
+
+            tabel[0].format()
+                .font_style({tabulate::FontStyle::bold})
+                .font_align(tabulate::FontAlign::center)
+                .font_color(tabulate::Color::yellow);
+
+            std::cout << "\n=== All-Star Team " << an << " (top " << allStars.size() << ") ===\n";
+            std::cout << tabel << "\n";
             continue;
         }
 
