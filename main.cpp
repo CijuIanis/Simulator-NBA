@@ -19,7 +19,7 @@
 #include "SezonSimulator.h"
 #include "Observatori.h"
 #include "TwoWayPlayer.h"
-
+//doar un comentariu pentru commit
 std::string formatNum(double val) {
     std::ostringstream oss;
     double decimala = val - static_cast<int>(val);
