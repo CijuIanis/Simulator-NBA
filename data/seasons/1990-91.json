@@ -832,7 +832,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 40.0,
-      "logo": "assets/logos/boston-celtics-logo.png",
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Larry Bird",
@@ -1492,7 +1492,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 40.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Dominique Wilkins",
@@ -2646,7 +2646,7 @@
       "nume": "Nets",
       "oras": "New Jersey",
       "conferinta": "East",
-      "logo": "assets/logos/brooklyn-nets-logo.png",
+      "logo": "assets/logos/nets.png",
       "salaryCap": 40.0,
       "jucatori": [
         {
@@ -3802,7 +3802,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 40.0,
-      "logo": "assets/logos/horbrooklyn-nets-logo.png",
+      "logo": "assets/logos/hornets.png",
       "jucatori": [
         {
           "nume": "Rex Chapman",

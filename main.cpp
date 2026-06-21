@@ -19,6 +19,7 @@
 #include "SezonSimulator.h"
 #include "Observatori.h"
 #include "TwoWayPlayer.h"
+#include "Logouri.h"
 
 std::string formatNum(double val) {
     std::ostringstream oss;
@@ -40,7 +41,7 @@ int main() {
         std::cout << "Sezoane disponibile:\n";
         for (auto i = 0u; i < season.size(); i++)
             std::cout << "  " << season[i].getAn() << "\n";
-        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'simulare' / 'allstars' / 'exit']: ";
+        std::cout << "\nIntroduceti comanda [anul sezonului (ex:2022-23) / 'compara' / 'playoff' / 'simulare' / 'allstars' / 'logo' / 'exit']: ";
 
         std::string input;
         std::cin >> input;
@@ -182,6 +183,20 @@ int main() {
 
             std::cout << "\n=== All-Star Team " << an << " (top " << allStars.size() << ") ===\n";
             std::cout << tabel << "\n";
+            continue;
+        }
+        if (input == "logo") {
+            std::cout << "Introduceti anul sezonului: ";
+            std::string an;
+            std::cin >> an;
+
+            const Sezon* sezonGasit = liga.gasesteSezon(an);
+            if (!sezonGasit) {
+                std::cerr << "Sezonul '" << an << "' nu a fost gasit!\n";
+                continue;
+            }
+
+            Gui::afiseazaLogos(sezonGasit->getEchipe(), "Logo-uri " + an);
             continue;
         }
 

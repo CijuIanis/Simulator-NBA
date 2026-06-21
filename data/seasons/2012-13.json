@@ -502,7 +502,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 80.0,
-      "logo": "assets/logos/boston-celtics-logo.png",
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Paul Pierce",
@@ -1987,7 +1987,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 80.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Josh Smith",
@@ -2317,7 +2317,7 @@
       "oras": "Brooklyn",
       "conferinta": "East",
       "salaryCap": 80.0,
-      "logo": "assets/logos/brooklyn-nets-logo.png",
+      "logo": "assets/logos/nets.png",
       "jucatori": [
         {
           "nume": "Joe Johnson",
@@ -4132,7 +4132,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 80.0,
-      "logo": "assets/logos/horbrooklyn-nets-logo.png",
+      "logo": "assets/logos/hornets.png",
       "jucatori": [
         {
           "nume": "Kemba Walker",

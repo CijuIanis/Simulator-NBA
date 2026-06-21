@@ -337,7 +337,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 123.0,
-      "logo": "assets/logos/boston-celtics-logo.png",
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Jayson Tatum",
@@ -1822,7 +1822,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 123.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Trae Young",
@@ -1987,7 +1987,7 @@
       "oras": "Brooklyn",
       "conferinta": "East",
       "salaryCap": 123.0,
-      "logo": "assets/logos/brooklyn-nets-logo.png",
+      "logo": "assets/logos/nets.png",
       "jucatori": [
         {
           "nume": "Mikal Bridges",
@@ -2152,7 +2152,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 123.0,
-      "logo": "assets/logos/horbrooklyn-nets-logo.png",
+      "logo": "assets/logos/hornets.png",
       "jucatori": [
         {
           "nume": "LaMelo Ball",

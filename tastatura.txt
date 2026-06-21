@@ -3,4 +3,7 @@
 compara
 LeBron James
 Victor Wembanyama
+playoff
+simulare
+allstars
 exit

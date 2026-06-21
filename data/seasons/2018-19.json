@@ -1162,7 +1162,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 109.0,
-      "logo": "assets/logos/boston-celtics-logo.png",
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Kyrie Irving",
@@ -1987,7 +1987,7 @@
       "oras": "Brooklyn",
       "conferinta": "East",
       "salaryCap": 109.0,
-      "logo": "assets/logos/brooklyn-nets-logo.png",
+      "logo": "assets/logos/nets.png",
       "jucatori": [
         {
           "nume": "D'Angelo Russell",
@@ -3472,7 +3472,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 109.0,
-      "logo": "assets/logos/horbrooklyn-nets-logo.png",
+      "logo": "assets/logos/hornets.png",
       "jucatori": [
         {
           "nume": "Kemba Walker",
@@ -4297,7 +4297,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 109.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Trae Young",

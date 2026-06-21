@@ -7,7 +7,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 15.0,
-      "logo": "assets/logos/boston-celtics-logo.png",
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "Bill Russell",
@@ -1162,7 +1162,7 @@
       "oras": "St. Louis",
       "conferinta": "West",
       "salaryCap": 15.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Zelmo Beaty",

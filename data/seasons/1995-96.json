@@ -2482,7 +2482,7 @@
       "oras": "Atlanta",
       "conferinta": "East",
       "salaryCap": 55.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Mookie Blaylock",
@@ -4132,7 +4132,7 @@
       "oras": "New Jersey",
       "conferinta": "East",
       "salaryCap": 55.0,
-      "logo": "assets/logos/brooklyn-nets-logo.png",
+      "logo": "assets/logos/nets.png",
       "jucatori": [
         {
           "nume": "Kenny Anderson",
@@ -4627,7 +4627,7 @@
       "oras": "Charlotte",
       "conferinta": "East",
       "salaryCap": 55.0,
-      "logo": "assets/logos/horbrooklyn-nets-logo.png",
+      "logo": "assets/logos/hornets.png",
       "jucatori": [
         {
           "nume": "Glen Rice",

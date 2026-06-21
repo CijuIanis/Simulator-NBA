@@ -85,6 +85,8 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         src/Echipa.cpp
         src/Utilitati.h
         src/SezonLoader.h
+        src/Logouri.cpp
+        src/Logouri.h
 )
 target_sources(${MAIN_EXECUTABLE_NAME}
         PRIVATE
@@ -114,7 +116,6 @@ target_include_directories(${MAIN_EXECUTABLE_NAME} SYSTEM PRIVATE
         ext
 )
 
-# am adaugat SFML + Threads (si X11 pe Linux); legare intr-un singur apel cu PRIVATE
 target_link_libraries(${MAIN_EXECUTABLE_NAME} PRIVATE
         nlohmann_json::nlohmann_json
         tabulate::tabulate

@@ -502,7 +502,7 @@
       "oras": "Boston",
       "conferinta": "East",
       "salaryCap": 20.0,
-      "logo": "assets/logos/boston-celtics-logo.png",
+      "logo": "assets/logos/celtics.png",
       "jucatori": [
         {
           "nume": "John Havlicek",
@@ -1822,7 +1822,7 @@
       "oras": "Atlanta",
       "conferinta": "West",
       "salaryCap": 20.0,
-      "logo": "assets/logos/atlanta-hawks-logo.png",
+      "logo": "assets/logos/hawks.png",
       "jucatori": [
         {
           "nume": "Lou Hudson",
