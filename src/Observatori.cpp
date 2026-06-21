@@ -1,9 +1,10 @@
 #include "Observatori.h"
 #include <iostream>
 
+// LoggerConsola
 // cppcheck-suppress unusedFunction
 void LoggerConsola::onInceputPlayoff(const std::string& an) {
-    std::cout << "[Incepe playoff-ul sezonului " << an << "\n";
+    std::cout << "Incepe playoff-ul sezonului " << an << "\n";
 }
 
 // cppcheck-suppress unusedFunction
@@ -15,10 +16,10 @@ void LoggerConsola::onMeci(const Echipa& castigatoare, const Echipa& invinsa,
 
 // cppcheck-suppress unusedFunction
 void LoggerConsola::onCampioanaNBA(const Echipa& campioana) {
-    std::cout << " CAMPIOANA NBA: " << campioana.getNume()
-              << " (logo: " << campioana.getLogoPath() << ")\n";
+    std::cout << "CAMPIOANA NBA: " << campioana.getNume() << "\n";
 }
 
+// ColectorStatistici
 // cppcheck-suppress unusedFunction
 void ColectorStatistici::onInceputPlayoff(const std::string& /*an*/) {
     victorii.clear();
@@ -38,9 +39,30 @@ void ColectorStatistici::onCampioanaNBA(const Echipa& echipa) {
 
 // cppcheck-suppress unusedFunction
 void ColectorStatistici::afiseazaRaport() const {
-    std::cout << "\n[STATISTICI] Victorii in playoff:\n";
+    std::cout << "\nVictorii in playoff:\n";
     for (const auto& [nume, nr] : victorii)
         std::cout << "  " << nume << ": " << nr << "\n";
     if (!campioana.empty())
-        std::cout << "[STATISTICI] Campioana: " << campioana << "\n";
+        std::cout << "Campioana: " << campioana << "\n";
+}
+
+// ColectorMeciuri
+// cppcheck-suppress unusedFunction
+void ColectorMeciuri::onInceputPlayoff(const std::string& /*an*/) {
+    meciuri.clear();
+}
+
+// cppcheck-suppress unusedFunction
+void ColectorMeciuri::onMeci(const Echipa& castigatoare, const Echipa& invinsa,
+                             const std::string& runda) {
+    meciuri.push_back({&castigatoare, &invinsa, runda});
+}
+
+// cppcheck-suppress unusedFunction
+void ColectorMeciuri::onCampioanaNBA(const Echipa& /*campioana*/) {
+}
+
+// cppcheck-suppress unusedFunction
+const std::vector<Meci>& ColectorMeciuri::getMeciuri() const {
+    return meciuri;
 }

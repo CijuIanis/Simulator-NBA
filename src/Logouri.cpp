@@ -1,5 +1,7 @@
 #include "Logouri.h"
 #include "Stats.h"
+#include "SezonSimulator.h"
+#include "Observatori.h"
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include <algorithm>
@@ -10,6 +12,8 @@
 #include <cmath>
 #include <cstdio>
 #include <string>
+#include <map>
+#include <vector>
 
 namespace Gui {
 
@@ -43,6 +47,56 @@ void deseneazaTextCentrat(sf::RenderWindow& window, const sf::Font& font,
     window.draw(text);
 }
 
+void deseneazaLinie(sf::RenderWindow& window, float x1, float y1, float x2, float y2, sf::Color c) {
+    sf::Vertex linie[2] = {
+        sf::Vertex{{x1, y1}, c},
+        sf::Vertex{{x2, y2}, c}
+    };
+    window.draw(linie, 2, sf::PrimitiveType::Lines);
+}
+
+void deseneazaConector(sf::RenderWindow& window, float fxEdge, float fy0, float fy1,
+                       float mxEdge, float my, sf::Color c) {
+    const float midX = (fxEdge + mxEdge) / 2.0f;
+    deseneazaLinie(window, fxEdge, fy0, midX, fy0, c);
+    deseneazaLinie(window, fxEdge, fy1, midX, fy1, c);
+    deseneazaLinie(window, midX, fy0, midX, fy1, c);
+    deseneazaLinie(window, midX, my, mxEdge, my, c);
+}
+
+void deseneazaMatchup(sf::RenderWindow& window, const sf::Font& font, bool areFont,
+                      const std::map<std::string, sf::Texture>& texturi,
+                      float x, float y, float w, float h,
+                      const Echipa* castigatoare, const Echipa* invinsa) {
+    sf::RectangleShape box({w, h});
+    box.setPosition({x, y});
+    box.setFillColor(sf::Color(40, 42, 54));
+    box.setOutlineThickness(1.0f);
+    box.setOutlineColor(sf::Color(70, 72, 86));
+    window.draw(box);
+
+    const sf::Color auriu(255, 215, 0);
+    const sf::Color gri(165, 165, 175);
+    const float logoZona = h / 2.0f - 10.0f;
+
+    auto deseneazaRand = [&](const Echipa* e, float ry, sf::Color culoare) {
+        if (e == nullptr)
+            return;
+        const auto it = texturi.find(e->getNume());
+        if (it != texturi.end())
+            deseneazaLogo(window, it->second, x + 18.0f, ry + 4.0f, logoZona);
+        if (areFont) {
+            sf::Text text(font, e->getNume(), 14);
+            text.setFillColor(culoare);
+            text.setPosition({x + 38.0f, ry + 6.0f});
+            window.draw(text);
+        }
+    };
+
+    deseneazaRand(castigatoare, y, auriu);
+    deseneazaRand(invinsa, y + h / 2.0f, gri);
+}
+
 }  // namespace
 
 // cppcheck-suppress unusedFunction
@@ -55,7 +109,7 @@ void afiseazaLogos(const std::vector<Echipa>& echipe, const std::string& titlu) 
     sf::Font font;
     const bool areFont = font.openFromFile("assets/fonts/Mulish-Regular.ttf");
     if (!areFont)
-        std::cerr << "[GUI] Nu am gasit assets/fonts/Mulish-Regular.ttf; afisez doar logo-urile.\n";
+        std::cerr << "Nu am gasit assets/fonts/Mulish-Regular.ttf; afisez doar logo-urile.\n";
 
     std::vector<sf::Texture> texturi;
     std::vector<bool> areLogo;
@@ -108,7 +162,6 @@ void afiseazaCampioana(const std::vector<Echipa>& echipe, const std::string& an)
     const Echipa* vest = gasesteEchipaDupaNume(echipe, rez.campioanaWest);
     const Echipa* campioana = gasesteEchipaDupaNume(echipe, rez.campioanaFinals);
 
-    // scoruri finale: campioana castiga la 3-14 puncte (reproductibil pe an)
     std::mt19937 rng(static_cast<unsigned int>(std::hash<std::string>{}(an)));
     std::uniform_int_distribution<int> distScor(100, 120);
     std::uniform_int_distribution<int> distMarja(3, 14);
@@ -135,7 +188,7 @@ void afiseazaCampioana(const std::vector<Echipa>& echipe, const std::string& an)
     const sf::Color auriu(255, 215, 0);
     const sf::Color alb(230, 230, 235);
 
-    const float durata = 8.0f;  // secunde reale pentru tot meciul (fast forward)
+    const float durata = 8.0f;
     sf::Clock ceas;
 
     while (window.isOpen()) {
@@ -160,7 +213,6 @@ void afiseazaCampioana(const std::vector<Echipa>& echipe, const std::string& an)
         if (areFont)
             deseneazaTextCentrat(window, font, "Finala NBA " + an, 30, 480.0f, 26.0f, alb);
 
-        // in timpul meciului aratam ambele logo-uri sus
         if (okEst)  deseneazaLogo(window, texEst, 290.0f, 90.0f, 150.0f);
         if (okVest) deseneazaLogo(window, texVest, 670.0f, 90.0f, 150.0f);
 
@@ -184,8 +236,7 @@ void afiseazaCampioana(const std::vector<Echipa>& echipe, const std::string& an)
             }
         }
 
-        // la final: logo-ul MARE al campioanei in centru + numele
-        if (gata == true) {
+        if (gata) {
             if (estCampion && okEst)
                 deseneazaLogo(window, texEst, 480.0f, 345.0f, 170.0f);
             else if (vestCampion && okVest)
@@ -195,6 +246,154 @@ void afiseazaCampioana(const std::vector<Echipa>& echipe, const std::string& an)
                 deseneazaTextCentrat(window, font, "CAMPIOANA NBA: " + campioana->getNume(),
                                      26, 480.0f, 530.0f, auriu);
         }
+
+        window.display();
+    }
+}
+
+// cppcheck-suppress unusedFunction
+void afiseazaBracket(const std::vector<Echipa>& echipe, const std::string& an) {
+    SezonSimulator simulator;
+    ColectorMeciuri colector;
+    simulator.adaugaObserver(&colector);
+    simulator.simuleaza(echipe, an);
+    const std::vector<Meci>& meciuri = colector.getMeciuri();
+
+    auto filtreaza = [&](const std::string& runda) {
+        std::vector<const Meci*> rez;
+        for (const auto& m : meciuri)
+            if (m.runda == runda)
+                rez.push_back(&m);
+        return rez;
+    };
+    const auto eastR1    = filtreaza("East R1");
+    const auto eastSemi  = filtreaza("East Semifinale");
+    const auto eastFinal = filtreaza("Finala East");
+    const auto westR1    = filtreaza("West R1");
+    const auto westSemi  = filtreaza("West Semifinale");
+    const auto westFinal = filtreaza("Finala West");
+    const auto nbaFinals = filtreaza("NBA Finals");
+
+    std::map<std::string, sf::Texture> texturi;
+    auto incarca = [&](const Echipa* e) {
+        if (e == nullptr || texturi.count(e->getNume()) > 0)
+            return;
+        sf::Texture tex;
+        if (tex.loadFromFile(e->getLogoPath()))
+            texturi.emplace(e->getNume(), std::move(tex));
+    };
+    for (const auto& m : meciuri) {
+        incarca(m.castigatoare);
+        incarca(m.invinsa);
+    }
+
+    const unsigned int latime = 1400;
+    const unsigned int inaltime = 720;
+    sf::RenderWindow window(sf::VideoMode({latime, inaltime}), "Bracket Playoff " + an);
+    window.setFramerateLimit(60);
+
+    sf::Font font;
+    const bool areFont = font.openFromFile("assets/fonts/Mulish-Regular.ttf");
+
+    const float boxW = 195.0f;
+    const float boxH = 64.0f;
+
+    const float xEastR1 = 20.0f, xEastSemi = 230.0f, xEastFinal = 440.0f;
+    const float xWestR1 = 1185.0f, xWestSemi = 975.0f, xWestFinal = 765.0f;
+    const float xCentru = 700.0f;
+
+    const sf::Color auriu(255, 215, 0);
+    const sf::Color alb(230, 230, 235);
+    const sf::Color linieCol(80, 82, 96);
+
+    auto cy = [&](float y) { return y + boxH / 2.0f; };
+
+    // pozitii y centrate uniform, in functie de cate meciuri are runda
+    const float sus = 80.0f;
+    const float disponibil = static_cast<float>(inaltime) - sus - 30.0f;
+    auto yCentrate = [&](std::size_t n) {
+        std::vector<float> ys;
+        if (n == 0) return ys;
+        const float pas = disponibil / static_cast<float>(n);
+        for (std::size_t i = 0; i < n; ++i)
+            ys.push_back(sus + pas * static_cast<float>(i) + (pas - boxH) / 2.0f);
+        return ys;
+    };
+
+    const auto yEastR1   = yCentrate(eastR1.size());
+    const auto yEastSemi = yCentrate(eastSemi.size());
+    const auto yEastFin  = yCentrate(eastFinal.size());
+    const auto yWestR1   = yCentrate(westR1.size());
+    const auto yWestSemi = yCentrate(westSemi.size());
+    const auto yWestFin  = yCentrate(westFinal.size());
+
+    // conectori doar cand runda se injumatateste curat
+    auto conectori = [&](const std::vector<float>& yFeeder, float xFeederEdge,
+                          const std::vector<float>& yMerged, float xMergedEdge) {
+        if (yFeeder.empty() || yMerged.empty())
+            return;
+
+        if (yFeeder.size() == 2 * yMerged.size()) {
+            for (std::size_t i = 0; i < yMerged.size(); ++i)
+                deseneazaConector(window, xFeederEdge, cy(yFeeder[2 * i]), cy(yFeeder[2 * i + 1]),
+                                  xMergedEdge, cy(yMerged[i]), linieCol);
+            return;
+        }
+
+        const float midX = (xFeederEdge + xMergedEdge) / 2.0f;
+        float minY = cy(yFeeder[0]);
+        float maxY = cy(yFeeder[0]);
+        for (float y : yFeeder) { minY = std::min(minY, cy(y)); maxY = std::max(maxY, cy(y)); }
+        for (float y : yMerged) { minY = std::min(minY, cy(y)); maxY = std::max(maxY, cy(y)); }
+
+        deseneazaLinie(window, midX, minY, midX, maxY, linieCol);
+        for (float y : yFeeder) deseneazaLinie(window, xFeederEdge, cy(y), midX, cy(y), linieCol);
+        for (float y : yMerged) deseneazaLinie(window, midX, cy(y), xMergedEdge, cy(y), linieCol);
+    };
+
+    auto deseneazaColoana = [&](const std::vector<const Meci*>& runda, float x, const std::vector<float>& ys) {
+        for (std::size_t i = 0; i < runda.size() && i < ys.size(); ++i)
+            deseneazaMatchup(window, font, areFont, texturi, x, ys[i], boxW, boxH,
+                             runda[i]->castigatoare, runda[i]->invinsa);
+    };
+
+    while (window.isOpen()) {
+        while (const std::optional event = window.pollEvent()) {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+
+        window.clear(sf::Color(24, 26, 34));
+
+        // conectori (sub cutii)
+        conectori(yEastR1, xEastR1 + boxW, yEastSemi, xEastSemi);
+        conectori(yEastSemi, xEastSemi + boxW, yEastFin, xEastFinal);
+        conectori(yWestR1, xWestR1, yWestSemi, xWestSemi + boxW);
+        conectori(yWestSemi, xWestSemi, yWestFin, xWestFinal + boxW);
+
+        // cutiile de meci
+        deseneazaColoana(eastR1, xEastR1, yEastR1);
+        deseneazaColoana(eastSemi, xEastSemi, yEastSemi);
+        deseneazaColoana(eastFinal, xEastFinal, yEastFin);
+        deseneazaColoana(westR1, xWestR1, yWestR1);
+        deseneazaColoana(westSemi, xWestSemi, yWestSemi);
+        deseneazaColoana(westFinal, xWestFinal, yWestFin);
+
+        // campioana, centrata vertical
+        const float midY = static_cast<float>(inaltime) / 2.0f;
+        const Echipa* campion = nbaFinals.empty() ? nullptr : nbaFinals[0]->castigatoare;
+        if (areFont)
+            deseneazaTextCentrat(window, font, "CAMPIOANA", 22, xCentru, midY - 95.0f, auriu);
+        if (campion != nullptr) {
+            const auto it = texturi.find(campion->getNume());
+            if (it != texturi.end())
+                deseneazaLogo(window, it->second, xCentru, midY - 60.0f, 110.0f);
+            if (areFont)
+                deseneazaTextCentrat(window, font, campion->getNume(), 18, xCentru, midY + 65.0f, auriu);
+        }
+
+        if (areFont)
+            deseneazaTextCentrat(window, font, "Playoff " + an, 26, xCentru, 20.0f, alb);
 
         window.display();
     }

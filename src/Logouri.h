@@ -9,4 +9,8 @@ namespace Gui {
 
     // fereastra cu finala NBA si campioana (logo vs logo + campioana mare)
     void afiseazaCampioana(const std::vector<Echipa>& echipe, const std::string& an);
+
+    // fereastra cu bracket-ul playoff-ului
+    void afiseazaBracket(const std::vector<Echipa>& echipe, const std::string& an);
+
 }
