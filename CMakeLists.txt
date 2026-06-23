@@ -35,7 +35,6 @@ FetchContent_Declare(
         GIT_PROGRESS   ON
 )
 
-# ----- SFML (nou) -----
 set(SFML_WARNINGS_AS_ERRORS OFF)
 FetchContent_Declare(
         SFML
@@ -45,63 +44,57 @@ FetchContent_Declare(
         GIT_SHALLOW    1
         GIT_PROGRESS   ON
 )
-# ----------------------
 
 FetchContent_MakeAvailable(nlohmann_json tabulate SFML)
 
 ###############################################################################
 # external dependencies with find_package
-find_package(Threads REQUIRED)               # nou (cerut de SFML)
-if(APPLE)                                     # nou
-elseif(UNIX)                                  # nou
-    find_package(X11)                         # nou (SFML pe Linux)
-endif()                                       # nou
+find_package(Threads REQUIRED)
+if(APPLE)
+elseif(UNIX)
+    find_package(X11)
+endif()
 
 ###############################################################################
 add_executable(${MAIN_EXECUTABLE_NAME}
         main.cpp
-        src/Exceptii.h
-        src/Exceptii.cpp
-        src/Guard.cpp
-        src/Guard.h
-        src/Forward.cpp
-        src/Forward.h
-        src/Center.cpp
-        src/Center.h
-        src/Stats.cpp
-        src/Stats.h
-        src/StatLeader.h
-        src/NBALeague.cpp
-        src/NBALeague.h
-        src/Observer.h
-        src/SezonSimulator.cpp
-        src/SezonSimulator.h
-        src/Observatori.cpp
-        src/Observatori.h
-        src/TwoWayPlayer.cpp
-        src/TwoWayPlayer.h
-        main.cpp
-        src/Center.cpp
-        src/Echipa.cpp
-        src/Utilitati.h
-        src/SezonLoader.h
-        src/Logouri.cpp
-        src/Logouri.h
 )
 target_sources(${MAIN_EXECUTABLE_NAME}
         PRIVATE
-        src/Contract.cpp
-        src/Player.cpp
-        src/Echipa.cpp
-        src/Sezon.cpp
-        src/SezonLoader.cpp
-        src/Utilitati.cpp
+        src/Exceptii.h
         src/Exceptii.cpp
+        src/Contract.h
+        src/Contract.cpp
+        src/Player.h
+        src/Player.cpp
+        src/Guard.h
         src/Guard.cpp
+        src/Forward.h
         src/Forward.cpp
+        src/Center.h
         src/Center.cpp
-        src/Stats.cpp
+        src/TwoWayPlayer.h
         src/TwoWayPlayer.cpp
+        src/Echipa.h
+        src/Echipa.cpp
+        src/Sezon.h
+        src/Sezon.cpp
+        src/SezonLoader.h
+        src/SezonLoader.cpp
+        src/Utilitati.h
+        src/Utilitati.cpp
+        src/Stats.h
+        src/Stats.cpp
+        src/StatLeader.h
+        src/NBALeague.h
+        src/NBALeague.cpp
+        src/Observer.h
+        src/SezonSimulator.h
+        src/SezonSimulator.cpp
+        src/Observatori.h
+        src/Observatori.cpp
+        src/Logouri.h
+        src/Logouri.cpp
 )
 
 set_compiler_flags(RUN_SANITIZERS ${USE_ASAN} TARGET_NAMES ${MAIN_EXECUTABLE_NAME})
