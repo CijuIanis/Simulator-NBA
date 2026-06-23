@@ -33,11 +33,11 @@ La final de predare am adaugat si logo-urile echipelor (momentan am pus in JSON 
 
 Pentru ultima parte am mai adaugat cateva lucruri: am facut liga un singleton (NBALeague), ca sa incarc cele 13 sezoane o singura data, un sistem de observatori pentru simularea de playoff (un logger in consola plus colectori de meciuri si statistici) si o clasa sablon StatLeader<T> pentru topuri. 
 Am bagat si o interfata grafica cu SFML, cu cateva comenzi noi:
--logo-urile echipelor dintr-un sezon, asezate intr-o grila cu numele sub fiecare ('logo');
--o animatie a finalei NBA, un fel de "fast forward" cu ceasul de la 48:00 la 00:00, in care scorul creste de la 0 pana la cel final ('campion');
--castigatoarea e cea data de simulare (dupa scorul de impact al echipelor), iar scorul propriu-zis e generat aleator dar reproductibil — pornesc generatorul din anul sezonului, asa ca aceeasi finala iese mereu cu acelasi scor;
--bracket-ul intreg de playoff, care se aranjeaza singur in functie de cate echipe are sezonul ('bracket');
--plus comenzi de tip playoff / simulare / allstars pentru rezultate si topuri in consola;
+- logo-urile echipelor dintr-un sezon, asezate intr-o grila cu numele sub fiecare ('logo');
+- o animatie a finalei NBA, un fel de "fast forward" cu ceasul de la 48:00 la 00:00, in care scorul creste de la 0 pana la cel final ('campion');
+- castigatoarea e cea data de simulare (dupa scorul de impact al echipelor), iar scorul propriu-zis e generat aleator dar reproductibil — pornesc generatorul din anul sezonului, asa ca aceeasi finala iese mereu cu acelasi scor;
+- bracket-ul intreg de playoff, care se aranjeaza singur in functie de cate echipe are sezonul ('bracket');
+- plus comenzi de tip playoff / simulare / allstars pentru rezultate si topuri in consola;
 
 
 ## Resurse
