@@ -31,7 +31,8 @@ Alte functii pe care le-am folosit in Stats pentru a genera **statistici agregat
 De asemenea, analizat si echipele, uramrind numarul de All-Stars din fiecare echipa, cand le expira contractele jucatorilor si daca o echipa este contender la titlu.
 La final de predare am adaugat si logo-urile echipelor (momentan am pus in JSON scrisul si la echipele care pe parcursul aniilor si-au schimbat logo-ul le-am lasat logo-ul din sezonul actual, dar la tema 3 voi modifica cum trebuie).
 
-Pentru ultima parte am mai adaugat cateva lucruri: am facut liga un singleton (NBALeague), ca sa incarc cele 13 sezoane o singura data, un sistem de observatori pentru simularea de playoff (un logger in consola plus colectori de meciuri si statistici) si o clasa sablon StatLeader<T> pentru topuri. Am bagat si o interfata grafica cu SFML, cu cateva comenzi noi:
+Pentru ultima parte am mai adaugat cateva lucruri: am facut liga un singleton (NBALeague), ca sa incarc cele 13 sezoane o singura data, un sistem de observatori pentru simularea de playoff (un logger in consola plus colectori de meciuri si statistici) si o clasa sablon StatLeader<T> pentru topuri. 
+Am bagat si o interfata grafica cu SFML, cu cateva comenzi noi:
 -logo-urile echipelor dintr-un sezon, asezate intr-o grila cu numele sub fiecare ('logo');
 -o animatie a finalei NBA, un fel de "fast forward" cu ceasul de la 48:00 la 00:00, in care scorul creste de la 0 pana la cel final ('campion');
 -castigatoarea e cea data de simulare (dupa scorul de impact al echipelor), iar scorul propriu-zis e generat aleator dar reproductibil — pornesc generatorul din anul sezonului, asa ca aceeasi finala iese mereu cu acelasi scor;
