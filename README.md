@@ -50,4 +50,4 @@ Am implementat și o interfață grafică cu SFML, cu câteva comenzi noi:
 
 - după cum am zis și în partea de sus, am generat echipele cu toți jucătorii cu ajutorul inteligenței artificiale, deoarece ar fi luat mult să implementez n jucători pentru un anumit număr de echipe pentru 13 sezoane;
 - ideea de bracket am luat-o de pe site-ul https://www.espn.com/nba/playoff-bracket, site oficial care contorizează chestii despre mai multe sporturi;
-- logo-urile echipelor le-am luat de pe acest site: https://www.pngwing.com/en/search?q=NBA, iar pe cele pe care nu le-am găsit acolo / nu mi-au plăcut le-am pus direct din laptop, avându-le de la alt proiect din cadrul facultății salvate (nu mai știu site-ul exact);
+- majoritatea logo-urilor le-am luat de pe acest site: https://www.pngwing.com/en/search?q=NBA, iar pe celelalte le-am luat de pe acest site: https://en.wikipedia.org/wiki/Category:NBA_logos;
